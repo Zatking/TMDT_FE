@@ -7,7 +7,7 @@ import {
 import { faHeart, faUser } from "@fortawesome/free-regular-svg-icons";
 
 const Header = () => (
-  <div className="grid grid-cols-5 h-20 px-20 border border-b-black items-center">
+  <div className="grid grid-cols-5 h-20 px-20 border border-b-black items-center static">
     <p className="font-bold text-3xl">Oggy</p>
     <div className="col-span-2 text-lg grid grid-cols-4 gap-x-20">
       <p className="flex justify-center border-2 border-transparent hover:border-b-[#e0e0e0] cursor-pointer">
