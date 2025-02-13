@@ -8,10 +8,18 @@ export default function Home() {
     <div className="relative">
       <Header />
       <div className="grid grid-cols-4 px-20">
-        <div className="col-span-1 border-2 border-transparent border-r-[#000]">
+        <div className="col-span-1 border border-transparent border-r-[#000]">
           <Navigation />
         </div>
-        <div className="col-span-3"></div>
+        <div className="col-span-3 h-full flex items-center pl-10">
+          <div className="rounded-xl overflow-hidden">
+            <img
+              src="https://promotions.newegg.com/intel/24-1244/1920x360@2x.jpg"
+              alt=""
+              className=""
+            />
+          </div>
+        </div>
       </div>
       {/* <Category className="absolute top-0 left-0"></Category> */}
     </div>

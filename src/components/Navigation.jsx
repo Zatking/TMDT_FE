@@ -28,14 +28,14 @@ const Navigation = () => {
           <p>Processor, Mainboard</p>
           <FontAwesomeIcon icon={faChevronRight} />
         </li>
-        <Category />
+        <Category cate="cpu" />
       </div>
       <div className="dropdown dropdown-hover dropdown-right w-full">
         <li className="flex justify-between hover:bg-[#e0e0e0] cursor-pointer py-2 px-3 rounded-lg items-center">
           <p>Graphic Card, Power Supply</p>
           <FontAwesomeIcon icon={faChevronRight} />
         </li>
-        <Category />
+        <Category cate="gpu" />
       </div>
       <div className="dropdown dropdown-hover dropdown-right w-full">
         <li className="flex justify-between hover:bg-[#e0e0e0] cursor-pointer py-2 px-3 rounded-lg items-center">
