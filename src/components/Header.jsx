@@ -1,4 +1,5 @@
 import React from "react";
+import { Outlet, Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faMagnifyingGlass,
@@ -14,20 +15,26 @@ const Header = () => (
   <div className="grid grid-cols-5 h-20 px-20 border border-b-black items-center static">
     <p className="font-bold text-3xl text-[#ff0000]">Oggy</p>
     <div className="col-span-2 text-lg grid grid-cols-4 gap-x-20">
-      <p className="flex hover:text-[#ff0000] justify-center border-2 border-transparent hover:border-b-[#ff0000] cursor-pointer">
+      <Link
+        to="/"
+        className="flex hover:text-[#ff0000] justify-center border-2 border-transparent hover:border-b-[#ff0000] cursor-pointer">
         Home
-      </p>
-      <p className="flex hover:text-[#ff0000] justify-center border-2 border-transparent hover:border-b-[#ff0000] cursor-pointer">
+      </Link>
+      <Link
+        to="/news"
+        className="flex hover:text-[#ff0000] justify-center border-2 border-transparent hover:border-b-[#ff0000] cursor-pointer">
         News
-      </p>
-      <p className="flex hover:text-[#ff0000] justify-center border-2 border-transparent hover:border-b-[#ff0000] cursor-pointer">
-        About
-      </p>
-      <p
+      </Link>
+      <Link
+        to="/contact"
+        className="flex hover:text-[#ff0000] justify-center border-2 border-transparent hover:border-b-[#ff0000] cursor-pointer">
+        Contact
+      </Link>
+      <Link
         className="flex hover:text-[#ff0000] justify-center border-2 border-transparent hover:border-b-[#ff0000] cursor-pointer"
         id="signInTxt">
         Sign In
-      </p>
+      </Link>
     </div>
     <div className="col-span-2 flex justify-end items-center space-x-5">
       <div className="flex">
