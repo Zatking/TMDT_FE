@@ -12,10 +12,10 @@ export default function ProductList(props) {
           {props.title}
         </p>
         <button className="bg-[#ff0000] hover:bg-[#fff] border-2 border-[#ff0000] py-3 px-5 rounded-lg text-[#fff] hover:text-[#ff0000] font-bold">
-          View All  
+          View All
         </button>
       </div>
-      <div className="grid grid-cols-4 gap-x-5">
+      <div className="grid grid-cols-4 gap-5">
         <Product />
         <Product />
         <Product />

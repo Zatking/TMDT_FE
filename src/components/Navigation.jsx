@@ -4,9 +4,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 
 const Navigation = () => {
-  let isHover = false;
   return (
-    <ul className="pr-20 py-5 border-1 border-r-black">
+    <ul className="pr-14 py-5 border-1 border-r-black">
       <li className="flex justify-between hover:text-[#ff0000] cursor-pointer py-2 px-3 rounded-lg items-center">
         <p>Build your own PC</p>
       </li>

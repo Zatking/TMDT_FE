@@ -1,11 +1,10 @@
-import React from "react";
 import Header from "../components/Header";
 
-export default function News() {
+export default function Cart() {
   return (
     <div>
       <Header />
-      <h1>News</h1>
+      <p>Cart</p>
     </div>
   );
 }
