@@ -2,6 +2,7 @@ import React from "react";
 import Header from "../components/Header";
 import Navigation from "../components/Navigation";
 import Category from "../components/CategoryList";
+import ProductList from "../components/ProductList";
 
 export default function Home() {
   return (
@@ -21,7 +22,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      {/* <Category className="absolute top-0 left-0"></Category> */}
+      <ProductList subTitle="This Month" title="Best Selling Products" />
     </div>
   );
 }
