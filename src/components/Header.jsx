@@ -14,7 +14,7 @@ import { faHeart as solidHeart } from "@fortawesome/free-solid-svg-icons";
 const Header = () => {
   const location = useLocation();
   return (
-    <div className="grid grid-cols-5 h-20 px-20 border border-b-black items-center static">
+    <div className="grid grid-cols-5 h-20 px-20 border border-b-black items-center static bg-[#fff]">
       <p className="font-bold text-3xl text-[#ff0000]">Oggy</p>
       <div className="col-span-2 text-lg grid grid-cols-4 gap-x-20">
         <Link
@@ -39,8 +39,9 @@ const Header = () => {
           Contact
         </Link>
         <Link
+          to="/login"
           className={`flex ${
-            location.pathname == "" ? "text-[#ff0000] font-bold" : ""
+            location.pathname == "/login" ? "text-[#ff0000] font-bold" : ""
           } hover:text-[#ff0000] justify-center border-2 border-transparent hover:border-b-[#ff0000] cursor-pointer`}
           id="signInTxt">
           Sign In
