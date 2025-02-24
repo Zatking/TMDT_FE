@@ -1,13 +1,10 @@
-import React from "react";
-import Header from "../components/Header";
 import Navigation from "../components/Navigation";
 import Category from "../components/CategoryList";
 import ProductList from "../components/ProductList";
 
 export default function Home() {
   return (
-    <div className="relative">
-      <Header />
+    <div className="relative mt-5">
       <div className="grid grid-cols-4 px-20">
         <div className="col-span-1 border border-transparent border-r-[#000]">
           <Navigation />

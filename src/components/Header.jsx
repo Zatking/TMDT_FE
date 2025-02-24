@@ -1,5 +1,4 @@
-import React from "react";
-import { Outlet, Link, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faMagnifyingGlass,
@@ -21,21 +20,24 @@ const Header = () => {
           to="/"
           className={`flex ${
             location.pathname == "/" ? "text-[#ff0000] font-bold" : ""
-          } hover:text-[#ff0000] justify-center border-2 border-transparent hover:border-b-[#ff0000] cursor-pointer`}>
+          } hover:text-[#ff0000] justify-center border-2 border-transparent hover:border-b-[#ff0000] cursor-pointer`}
+        >
           Home
         </Link>
         <Link
           to="/news"
           className={`flex ${
             location.pathname == "/news" ? "text-[#ff0000] font-bold" : ""
-          } hover:text-[#ff0000] justify-center border-2 border-transparent hover:border-b-[#ff0000] cursor-pointer`}>
+          } hover:text-[#ff0000] justify-center border-2 border-transparent hover:border-b-[#ff0000] cursor-pointer`}
+        >
           News
         </Link>
         <Link
           to="/contact"
           className={`flex ${
             location.pathname == "/contact" ? "text-[#ff0000] font-bold" : ""
-          } hover:text-[#ff0000] justify-center border-2 border-transparent hover:border-b-[#ff0000] cursor-pointer`}>
+          } hover:text-[#ff0000] justify-center border-2 border-transparent hover:border-b-[#ff0000] cursor-pointer`}
+        >
           Contact
         </Link>
         <Link
@@ -43,7 +45,8 @@ const Header = () => {
           className={`flex ${
             location.pathname == "/login" ? "text-[#ff0000] font-bold" : ""
           } hover:text-[#ff0000] justify-center border-2 border-transparent hover:border-b-[#ff0000] cursor-pointer`}
-          id="signInTxt">
+          id="signInTxt"
+        >
           Sign In
         </Link>
       </div>
@@ -52,7 +55,7 @@ const Header = () => {
           <input
             type="text"
             placeholder="What are you looking for?"
-            className="px-2 bg-[#f5f5f5] h-10 w-52 items-center rounded-l-lg"
+            className="px-2 bg-[#f5f5f5] h-10 w-52 items-center rounded-l-lg outline-none"
           />
           <div className="w-10 h-10 flex justify-center items-center text-xl bg-[#f5f5f5] rounded-r-lg">
             <FontAwesomeIcon icon={faMagnifyingGlass} />
@@ -68,7 +71,7 @@ const Header = () => {
             icon={faCartShopping}
             className={`${
               location.pathname == "/cart" ? "text-[#ff0000]" : ""
-            } text-xl hover:text-[#ff0000]`}
+            } text-xl mt-1 hover:text-[#ff0000]`}
           />
         </Link>
         <div id="userProfile" className="text-xl hover:text-[#ff0000]">
