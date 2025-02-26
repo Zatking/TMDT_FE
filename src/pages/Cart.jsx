@@ -8,6 +8,8 @@ import {
   faTrash,
 } from "@fortawesome/free-solid-svg-icons";
 import InforBuyer from "./InforBuyer";
+import Payment from "./Payment";
+import SuccessOrder from "./SuccessOrder";
 
 const Cart = () => {
   const [pages, setPages] = useState(1);
@@ -111,12 +113,15 @@ const Cart = () => {
           <div className=" m-4 p-4 border-b">
             {dbfake.map((item, index) => {
               return (
-                <div key={item.id} className="grid grid-cols-12 gap-0 m-2">
+                <div
+                  key={item.id}
+                  className="grid grid-cols-12 gap-0 m-2 my-10"
+                >
                   <img
                     src={item.image}
                     className="col-span-2 h-24 w-full object-cover border rounded-md"
                   />
-                  <p className="col-span-7 mx-2 text-xl font-bold">
+                  <p className="col-span-6 mx-2 text-xl font-bold">
                     {item.name}
                   </p>
                   <div className="col-span-2  justify-end">
@@ -146,7 +151,7 @@ const Cart = () => {
                     </div>
                   </div>
                   <button
-                    className="col-span-1 h-fit p-4 bg-red-500 m-2 rounded-md"
+                    className="col-span-2 h-fit p-4 bg-red-500 m-2 rounded-md"
                     onClick={() =>
                       setDbfake(dbfake.filter((item, i) => i !== index))
                     }
@@ -162,6 +167,8 @@ const Cart = () => {
           </div>
         )}
         {pages === 2 && <InforBuyer />}
+        {pages === 3 && <Payment />}
+        {pages === 4 && <SuccessOrder />}
         <div
           className={`p-4 border-b grid grid-cols-12  ${
             pages === 4 ? "hidden" : " "
