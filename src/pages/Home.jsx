@@ -4,7 +4,7 @@ import ProductList from "../components/ProductList";
 
 export default function Home() {
   return (
-    <div className="relative mt-5">
+    <div className="relative pt-5 bg-white">
       <div className="grid grid-cols-4 px-20">
         <div className="col-span-1 border border-transparent border-r-[#000]">
           <Navigation />
@@ -19,7 +19,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <ProductList subTitle="This Month" title="Best Selling Products" />
+      <ProductList />
     </div>
   );
 }

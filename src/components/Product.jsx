@@ -1,37 +1,132 @@
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faCartShopping } from "@fortawesome/free-solid-svg-icons";
+import { useEffect, useState } from "react";
+import Cart from "../pages/Cart";
 
 export default function Product() {
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      setLoading(true);
+      try {
+        const res = await fetch("https://node-tmdt.vercel.app/api/get-product");
+        const data = await res.json();
+        setProducts(data.products);
+      } catch (error) {
+        setError(error);
+        console.log("error: ", error);
+      }
+    };
+    fetchProducts();
+    setLoading(false);
+  }, []);
+
+  const toVND = (amount) => {
+    return new Intl.NumberFormat("vi-VN", {
+      style: "currency",
+      currency: "VND",
+    }).format(amount);
+  };
+
   return (
-    <Link
-      to="/productDetail"
-      className="p-5 rounded-lg overflow-hidden shadow-lg group"
-    >
-      <div
-        id="proImg"
-        className={`w-full h-[19vw] relative rounded-md overflow-hidden`}
-      >
-        <img
-          src="https://product.hstatic.net/200000420363/product/cd1fe821-7737-4bb6-b1ed-f93b7650fbd9_c7b610cb65c44070b6b40644caf618fa_master.png"
-          alt=""
-        />
-        <Link
-          to={"/cart"}
-          className="group-hover:right-0 absolute transition-all duration-500 ease-in-out right-[-150px] bg-[#ff0000] text-[#fff] py-2 px-5 bottom-0 cursor-pointer bg-opacity-75 hover:bg-opacity-100 rounded-tl-lg"
-        >
-          <FontAwesomeIcon icon={faCartShopping} />
-          Add to cart
-        </Link>
-      </div>
-      <div className="grid grid-cols-2 py-1 items-center">
-        <h1 className="font-bold text-lg">Product</h1>
-        <p className="text-end text-[#ffd700]">
-          0.0
-          <FontAwesomeIcon icon={faStar} className="ml-1" />
+    <div>
+      <p className="border-l-8 border-[#ff0000] px-5 text-lg text-[#ff0000] font-bold">
+        This Month
+      </p>
+      <div className="flex justify-between items-center">
+        <p className="text-3xl font-semibold mt-3 mb-10 text-[#000]">
+          Best Selling VGA
         </p>
+        <button className="bg-[#ff0000] hover:bg-[#fff] border-2 border-[#ff0000] py-3 px-5 rounded-lg text-[#fff] hover:text-[#ff0000] font-bold">
+          View All
+        </button>
       </div>
-      <p className="text-lg text-[#ff0000]">$100</p>
-    </Link>
+      <div className="w-full grid grid-cols-4 gap-5">
+        {products
+          .filter((product) => product.Category.CateName == "VGA")
+          .slice(0, 8)
+          .map((product) => (
+            <Link
+              to={"/productDetail/" + product._id}
+              className="p-5 rounded-lg overflow-hidden shadow-lg group"
+              key={product._id}
+            >
+              <div
+                id="proImg"
+                className={`w-full h-[19vw] relative rounded-md overflow-hidden`}
+              >
+                <img src={product.Images[0]} alt="" />
+                <button className="group-hover:right-0 absolute transition-all duration-500 ease-in-out right-[-150px] bg-[#ff0000] text-[#fff] py-2 px-5 bottom-0 cursor-pointer bg-opacity-75 hover:bg-opacity-100 rounded-tl-lg">
+                  <FontAwesomeIcon icon={faCartShopping} />
+                  Add to cart
+                </button>
+              </div>
+              <div className="grid grid-cols-2 py-1 items-center">
+                <h1 className="font-bold text-lg line-clamp-2">
+                  {product.ProName}
+                </h1>
+                <p className="text-end text-[#ffd700]">
+                  {product.Rate / 2}
+                  <FontAwesomeIcon icon={faStar} className="ml-1" />
+                </p>
+              </div>
+              <p className="text-lg text-[#ff0000]">{toVND(product.Price)}</p>
+            </Link>
+          ))}
+      </div>
+      <div className="mt-10">
+        <p className="border-l-8 border-[#ff0000] px-5 text-lg text-[#ff0000] font-bold">
+          This Month
+        </p>
+        <div className="flex justify-between items-center">
+          <p className="text-3xl font-semibold mt-3 mb-10 text-[#000]">
+            Best Selling Top CPU
+          </p>
+          <button className="bg-[#ff0000] hover:bg-[#fff] border-2 border-[#ff0000] py-3 px-5 rounded-lg text-[#fff] hover:text-[#ff0000] font-bold">
+            View All
+          </button>
+        </div>
+      </div>
+      <div className="w-full grid grid-cols-4 gap-5">
+        {products
+          .filter((product) => product.Category.CateName == "CPU")
+          .slice(0, 8)
+          .map((product) => (
+            <Link
+              to={"/productDetail/" + product._id}
+              className="p-5 rounded-lg overflow-hidden shadow-lg group"
+              key={product._id}
+            >
+              <div
+                id="proImg"
+                className={`w-full h-[19vw] relative rounded-md overflow-hidden`}
+              >
+                <img src={product.Images[0]} alt="" />
+                <Link
+                  to={"/cart"}
+                  className="group-hover:right-0 absolute transition-all duration-500 ease-in-out right-[-150px] bg-[#ff0000] text-[#fff] py-2 px-5 bottom-0 cursor-pointer bg-opacity-75 hover:bg-opacity-100 rounded-tl-lg"
+                >
+                  <FontAwesomeIcon icon={faCartShopping} />
+                  Add to cart
+                </Link>
+              </div>
+              <div className="grid grid-cols-2 py-1 items-center">
+                <h1 className="font-bold text-lg line-clamp-2">
+                  {product.ProName}
+                </h1>
+                <p className="text-end text-[#ffd700]">
+                  {product.Rate / 2}
+                  <FontAwesomeIcon icon={faStar} className="ml-1" />
+                </p>
+              </div>
+              <p className="text-lg text-[#ff0000]">{toVND(product.Price)}</p>
+            </Link>
+          ))}
+      </div>
+    </div>
   );
 }

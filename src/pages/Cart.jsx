@@ -10,9 +10,10 @@ import {
 import InforBuyer from "./InforBuyer";
 import Payment from "./Payment";
 import SuccessOrder from "./SuccessOrder";
-
+import { useEffect } from "react";
 const Cart = () => {
   const [pages, setPages] = useState(1);
+  const [db, setDb] = useState([]);
   const [dbfake, setDbfake] = useState([
     {
       id: "M280CS3030-250-RB",
@@ -39,13 +40,6 @@ const Cart = () => {
       count: 1,
     },
   ]);
-
-  const toVND = (amount) => {
-    return new Intl.NumberFormat("vi-VN", {
-      style: "currency",
-      currency: "VND",
-    }).format(amount * 25000);
-  };
 
   const [counts, setCounts] = useState(dbfake.map((item) => item.count));
 
