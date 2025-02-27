@@ -6,44 +6,36 @@ import {
   faCartShopping,
   faCircleCheck,
 } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
-
+import { Link, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import router from "../router/router";
 export default function ProductDetail() {
+  const [product, setproduct] = useState({});
+  const [dataPro, setDataPro] = useState([]);
   const rating = 4.7;
   const stars = [];
+  const { id } = useParams();
 
-  const ProductSimilar = [
-    {
-      id: "M280CS3030-250-RB",
-      name: "PNY XLR8 CS3030 250GB M.2 3D TLC NVMe PCI-Express",
-      price: 48.91,
-      image:
-        "https://res.cloudinary.com/dql6vzqri/image/upload/v1736438798/PC/uh0ek6tythjikphciix4.jpg",
-      rate: 4.5,
-    },
-    {
-      id: "M280CS3030-500-RB",
-      name: "PNY XLR8 CS3030 500GB M.2 3D TLC NVMe PCI-Express",
-      price: 72.12,
-      image:
-        "https://res.cloudinary.com/dql6vzqri/image/upload/v1736438799/PC/tcs9y214q6bbbmptjylf.jpg",
-      rate: 4,
-    },
-    {
-      id: "M280CS3030-1TB-RB",
-      name: "PNY XLR8 CS3030 1TB M.2 3D TLC NVMe PCI-Express",
-      price: 121.88,
-      image:
-        "https://res.cloudinary.com/dql6vzqri/image/upload/v1736438800/PC/vtdp03sqxbchyyzguelg.jpg",
-      rate: 5,
-    },
-  ];
+  useEffect(() => {
+    const fetchProduct = async () => {
+      try {
+        const res = await fetch(`https://node-tmdt.vercel.app/api/get-product`);
+        const data = await res.json();
+        setproduct(data.products.find((product) => product._id === id));
+        setDataPro(data.products);
+      } catch (error) {
+        console.log("error: ", error);
+      }
+    };
+    fetchProduct();
+    console.log(product);
+  }, [id]);
 
   const toVND = (amount) => {
     return new Intl.NumberFormat("vi-VN", {
       style: "currency",
       currency: "VND",
-    }).format(amount * 25000);
+    }).format(amount);
   };
 
   const Rate = (rating) => {
@@ -81,56 +73,49 @@ export default function ProductDetail() {
       <div>
         <div className="grid grid-cols-3 mx-20 my-5 bg-white w-[90%] p-4 rounded-lg">
           <div className="border-r border-[#a2a2a2] flex justify-center items-center">
-            <img
-              src={
-                "https://res.cloudinary.com/dql6vzqri/image/upload/v1736438796/PC/korlnm3h0sbrq5u11pre.jpg"
-              }
-              alt=""
-            />
+            <img src={product.Images} alt="" />
           </div>
           <div className="col-span-2 px-10">
-            <h1 className="font-bold text-4xl mb-2">
-              Gigabyte SSD M.2 512GB 2280 PCIe x2 NVMe
-            </h1>
+            <h1 className="font-bold text-4xl mb-2">{product.ProName}</h1>
             <p></p>
             <p className="flex items-center text-[#ffd700] mb-6">
               {stars}
               <span className="ml-2 text-xl text-[#000]">
-                {Rate(rating)} {rating}
+                {Rate(product.Rate / 2)} {product.Rate / 2}
               </span>
             </p>
             <p
               id="price"
               className="text-4xl text-[#ff0000] font-semibold mb-10"
             >
-              {toVND(75.99)}
+              {toVND(product.Price)}
             </p>
             <div className="grid grid-cols-2 gap-5">
-              <button className="w-full text-center py-2 border-4 border-[#ff0000] bg-[#ff0000] hover:bg-transparent text-[#fff] hover:text-[#ff0000] font-semibold text-xl rounded-xl">
+              <button
+                to="/cart"
+                className="w-full text-center py-2 border-4 border-[#ff0000] bg-[#ff0000] hover:bg-transparent text-[#fff] hover:text-[#ff0000] font-semibold text-xl rounded-xl"
+              >
                 Mua ngay
                 <br />
                 <p className="text-sm font-normal mt-1">
                   Giao tận nơi hoặc nhận tại cửa hàng
                 </p>
               </button>
-              <Link
-                to="/cart"
-                className="w-full text-center py-2 border-4 border-[#ff0000] bg-[#ff0000] hover:bg-transparent text-[#fff] hover:text-[#ff0000] font-semibold text-xl rounded-xl"
-              >
+              <button className="w-full text-center flex items-center justify-center py-2 border-4 border-[#ff0000] bg-[#ff0000] hover:bg-transparent text-[#fff] hover:text-[#ff0000] font-semibold text-xl rounded-xl">
                 <FontAwesomeIcon icon={faCartShopping} className="mr-2" />
                 Add to cart
-              </Link>
+              </button>
             </div>
             <p className="text-xl font-bold my-2 mt-6">
-              - Nhà sản xuất: {"Gigabyte"}
+              - Nhà sản xuất: {product.Brand?.BrandName}
             </p>
             <div className="my-2">
               <span className="text-xl font-bold">- Loại:</span>
-              <span className="text-xl"> {"Hard Drives"}</span>
+              <span className="text-xl"> {product.Category?.CateName}</span>
             </div>
             <div className="my-2">
               <span className="text-xl font-bold">- Mã sản phẩm:</span>
-              <span className="text-xl"> {"GP-GSM2NE8512GNTD"}</span>
+              <span className="text-xl"> {"VGA-" + product._id}</span>
             </div>
             <div className="my-2">
               <span className="text-xl font-bold">- Bảo hành:</span>
@@ -154,7 +139,7 @@ export default function ProductDetail() {
           <div className="bg-white p-4 mr-2 col-span-3">
             <p className="text-2xl font-bold my-4">Thông tin sản phẩm</p>
             <div className="">
-              <span className="text-xl font-bold">Mô tả</span>
+              <span className="text-xl font-bold">Mô tả: {"   "}</span>
               <span className="text-xl">
                 {"Bộ nhớ SSD M.2 2280 PCIe x2 NVMe 512GB"}
               </span>
@@ -163,27 +148,40 @@ export default function ProductDetail() {
           <div className="bg-white p-4 ml-2 col-span-1">
             <p className="text-2xl font-bold my-4"> Sản phẩm tương tự</p>
             <div className="">
-              {ProductSimilar.map((product) => (
-                <div key={product.id} className="">
-                  <div className="grid grid-cols-12 h-fit items-center gap-4 ">
-                    <div className="col-span-3">
-                      <img src={product.image} alt="" className="w-fit h-fit" />
+              {dataPro
+                .filter((product) => product._id !== id)
+                .slice(0, 4)
+                .map((product) => (
+                  <Link
+                    to={"/productDetail" + product._id}
+                    key={product._id}
+                    className=""
+                  >
+                    <div className="grid grid-cols-12 h-fit items-center gap-4 ">
+                      <div className="col-span-3">
+                        <img
+                          src={product.Images}
+                          alt=""
+                          className="w-fit h-fit"
+                        />
+                      </div>
+                      <div className="col-span-9 ">
+                        <p className="font-bold line-clamp-2">
+                          {product.ProName}
+                        </p>
+                        <p className="font-bold text-red-500">
+                          {toVND(product.Price)}
+                        </p>
+                        <p className="flex items-center text-[#ffd700] mb-6">
+                          {Rate(product.Rate / 2)}
+                          <span className="ml-2 text-xl text-[#000]">
+                            {product.Rate / 2}
+                          </span>
+                        </p>
+                      </div>
                     </div>
-                    <div className="col-span-9 ">
-                      <p className="font-bold">{product.name}</p>
-                      <p className="font-bold text-red-500">
-                        {toVND(product.price)}
-                      </p>
-                      <p className="flex items-center text-[#ffd700] mb-6">
-                        {Rate(product.rate)}
-                        <span className="ml-2 text-xl text-[#000]">
-                          {product.rate}
-                        </span>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              ))}
+                  </Link>
+                ))}
             </div>
           </div>
         </div>
