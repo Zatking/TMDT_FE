@@ -10,10 +10,13 @@ import Register from "../pages/Register";
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
 import ErrorPage from "./ErrorPage";
+import ProductListAD from "../Admin/Products/ProductList.AD";
+import HomeAD from "../Admin/Homel.AD";
+import ProductDetailAD from "../Admin/Products/ProDetail.AD";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/user",
     element: <App />,
     errorElement: <ErrorPage />,
     children: [
@@ -52,6 +55,21 @@ const router = createBrowserRouter([
       {
         path: "register",
         element: <Register />,
+      },
+    ],
+  },
+  {
+    path: "/",
+    element: <HomeAD />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        index: true,
+        element: <ProductListAD />,
+      },
+      {
+        path: "ProDetailAD/:id",
+        element: <ProductDetailAD />,
       },
     ],
   },

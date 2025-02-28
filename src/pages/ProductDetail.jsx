@@ -8,11 +8,9 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import router from "../router/router";
 export default function ProductDetail() {
   const [product, setproduct] = useState({});
   const [dataPro, setDataPro] = useState([]);
-  const rating = 4.7;
   const stars = [];
   const { id } = useParams();
 
@@ -149,33 +147,31 @@ export default function ProductDetail() {
             <p className="text-2xl font-bold my-4"> Sản phẩm tương tự</p>
             <div className="">
               {dataPro
-                .filter((product) => product._id !== id)
+                .filter(
+                  (pro) =>
+                    pro._id !== id &&
+                    pro.Category?.CateName === product.Category?.CateName
+                )
                 .slice(0, 4)
-                .map((product) => (
+                .map((pro) => (
                   <Link
-                    to={"/productDetail" + product._id}
-                    key={product._id}
+                    to={"/productDetail" + pro._id}
+                    key={pro._id}
                     className=""
                   >
                     <div className="grid grid-cols-12 h-fit items-center gap-4 ">
                       <div className="col-span-3">
-                        <img
-                          src={product.Images}
-                          alt=""
-                          className="w-fit h-fit"
-                        />
+                        <img src={pro.Images} alt="" className="w-fit h-fit" />
                       </div>
                       <div className="col-span-9 ">
-                        <p className="font-bold line-clamp-2">
-                          {product.ProName}
-                        </p>
+                        <p className="font-bold line-clamp-2">{pro.ProName}</p>
                         <p className="font-bold text-red-500">
-                          {toVND(product.Price)}
+                          {toVND(pro.Price)}
                         </p>
                         <p className="flex items-center text-[#ffd700] mb-6">
-                          {Rate(product.Rate / 2)}
+                          {Rate(pro.Rate / 2)}
                           <span className="ml-2 text-xl text-[#000]">
-                            {product.Rate / 2}
+                            {pro.Rate / 2}
                           </span>
                         </p>
                       </div>
