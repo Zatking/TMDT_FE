@@ -26,11 +26,11 @@ const Login = () => {
       style={{
         backgroundImage: `url(https://static.vecteezy.com/system/resources/previews/024/060/424/large_2x/radiant-orange-bokeh-background-of-computer-processor-on-motherboard-ai-generated-free-photo.jpg)`,
       }}
-      className="w-full h-screen bg-cover bg-center">
+      className="w-full h-screen bg-cover bg-center overflow-hidden">
       <Header />
-      <div className="flex justify-center items-center w-full py-16">
+      <div className="flex justify-center items-center w-full py-6">
         <motion.div
-          className="bg-[#fff] px-6 py-10 w-1/3 h-fit rounded-xl"
+          className="bg-[#fff] px-6 py-8 w-1/3 h-fit rounded-xl"
           animate={{ rotateY: rotation, scale }}
           transition={{ duration: 1, ease: "easeInOut" }}>
           <motion.div
@@ -79,7 +79,7 @@ const Login = () => {
                     Email
                   </motion.span>
                 </div>
-                <div className="my-5 relaive flex items-center">
+                <div className="my-5 relative flex items-center">
                   <motion.input
                     animate={{
                       opacity: showText ? 1 : 0,
