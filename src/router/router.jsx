@@ -13,65 +13,90 @@ import ErrorPage from "./ErrorPage";
 import ProductListAD from "../Admin/Products/ProductList.AD";
 import HomeAD from "../Admin/Homel.AD";
 import ProductDetailAD from "../Admin/Products/ProDetail.AD";
+import AuthProvider from "./AuthProvider";
+import { Outlet } from "react-router-dom";
+import ProtectedRouter from "./ProtectedRouter";
+import ChatWithBot from "../pages/ChatWithBot";
+
+const AuthLayout = () => {
+  return (
+    <AuthProvider>
+      <Outlet />
+    </AuthProvider>
+  );
+};
 
 const router = createBrowserRouter([
   {
-    path: "/user",
-    element: <App />,
+    element: <AuthLayout />,
     errorElement: <ErrorPage />,
     children: [
       {
-        index: true,
-        element: <Home />,
+        path: "/AD",
+        element: (
+          <ProtectedRouter role="admin">
+            <HomeAD />
+          </ProtectedRouter>
+        ),
+        children: [
+          {
+            index: true,
+            element: <ProductListAD />,
+          },
+          {
+            path: "ProDetailAD/:id",
+            element: <ProductDetailAD />,
+          },
+        ],
       },
       {
-        path: "news",
-        element: <News />,
-      },
-      {
-        path: "contact",
-        element: <Contact />,
-      },
-      {
-        path: "profile",
-        element: <Profile />,
-      },
-      {
-        path: "productDetail/:id",
-        element: <ProductDetail />,
-      },
-      {
-        path: "product",
-        element: <Product />,
-      },
-      {
-        path: "cart",
-        element: <Cart />,
-      },
-      {
-        path: "login",
-        element: <Login />,
-      },
-      {
-        path: "register",
-        element: <Register />,
-      },
-    ],
-  },
-  {
-    path: "/",
-    element: <HomeAD />,
-    errorElement: <ErrorPage />,
-    children: [
-      {
-        index: true,
-        element: <ProductListAD />,
-      },
-      {
-        path: "ProDetailAD/:id",
-        element: <ProductDetailAD />,
+        path: "/",
+        element: <App />,
+        children: [
+          {
+            path: "/",
+            element: <Home />,
+          },
+          {
+            path: "/ChatBot",
+            element: <ChatWithBot />,
+          },
+          {
+            path: "news",
+            element: <News />,
+          },
+          {
+            path: "contact",
+            element: <Contact />,
+          },
+          {
+            path: "profile",
+            element: <Profile />,
+          },
+          {
+            path: "productDetail/:id",
+            element: <ProductDetail />,
+          },
+          {
+            path: "product",
+            element: <Product />,
+          },
+          {
+            path: "cart",
+            element: <Cart />,
+          },
+          {
+            path: "login",
+            element: <Login />,
+          },
+          {
+            path: "register",
+            element: <Register />,
+          },
+        ],
       },
     ],
   },
 ]);
+
 export default router;
