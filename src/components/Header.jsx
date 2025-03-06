@@ -15,7 +15,7 @@ const Header = () => {
   return (
     <div className="grid grid-cols-5 h-20 px-20 border border-b-black items-center static bg-[#fff]">
       <p className="font-bold text-3xl text-[#ff0000]">Oggy</p>
-      <div className="col-span-2 text-lg grid grid-cols-4 gap-x-20">
+      <div className="col-span-2 text-lg grid grid-cols-5 gap-x-20">
         <Link
           to="/user"
           className={`flex ${
@@ -41,7 +41,20 @@ const Header = () => {
           Contact
         </Link>
         <Link
+<<<<<<< HEAD
           to="/user/login"
+=======
+          to="/ChatBot"
+          className={`flex ${
+            location.pathname == "/ChatBot" ? "text-[#ff0000] font-bold" : ""
+          } hover:text-[#ff0000] justify-center border-2 border-transparent hover:border-b-[#ff0000] cursor-pointer`}
+          id="signInTxt"
+        >
+          ChatBot
+        </Link>
+        <Link
+          to="/login"
+>>>>>>> 8140b1ec27c778286d4c761b9cb114dd1999ef10
           className={`flex ${
             location.pathname == "/login" ? "text-[#ff0000] font-bold" : ""
           } hover:text-[#ff0000] justify-center border-2 border-transparent hover:border-b-[#ff0000] cursor-pointer`}

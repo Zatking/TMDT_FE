@@ -13,19 +13,48 @@ import ErrorPage from "./ErrorPage";
 import ProductListAD from "../Admin/Products/ProductList.AD";
 import HomeAD from "../Admin/Homel.AD";
 import ProductDetailAD from "../Admin/Products/ProDetail.AD";
+<<<<<<< HEAD
 import ProductPage from "../pages/ProductPage";
+=======
+import AuthProvider from "./AuthProvider";
+import { Outlet } from "react-router-dom";
+import ProtectedRouter from "./ProtectedRouter";
+import ChatWithBot from "../pages/ChatWithBot";
+
+const AuthLayout = () => {
+  return (
+    <AuthProvider>
+      <Outlet />
+    </AuthProvider>
+  );
+};
+>>>>>>> 8140b1ec27c778286d4c761b9cb114dd1999ef10
 
 const router = createBrowserRouter([
   {
-    path: "/user",
-    element: <App />,
+    element: <AuthLayout />,
     errorElement: <ErrorPage />,
     children: [
       {
-        index: true,
-        element: <Home />,
+        path: "/AD",
+        element: (
+          <ProtectedRouter role="admin">
+            <HomeAD />
+          </ProtectedRouter>
+        ),
+        children: [
+          {
+            index: true,
+            element: <ProductListAD />,
+          },
+          {
+            path: "ProDetailAD/:id",
+            element: <ProductDetailAD />,
+          },
+        ],
       },
       {
+<<<<<<< HEAD
         path: "news",
         element: <News />,
       },
@@ -75,8 +104,55 @@ const router = createBrowserRouter([
       {
         path: "ProDetailAD/:id",
         element: <ProductDetailAD />,
+=======
+        path: "/",
+        element: <App />,
+        children: [
+          {
+            path: "/",
+            element: <Home />,
+          },
+          {
+            path: "/ChatBot",
+            element: <ChatWithBot />,
+          },
+          {
+            path: "news",
+            element: <News />,
+          },
+          {
+            path: "contact",
+            element: <Contact />,
+          },
+          {
+            path: "profile",
+            element: <Profile />,
+          },
+          {
+            path: "productDetail/:id",
+            element: <ProductDetail />,
+          },
+          {
+            path: "product",
+            element: <Product />,
+          },
+          {
+            path: "cart",
+            element: <Cart />,
+          },
+          {
+            path: "login",
+            element: <Login />,
+          },
+          {
+            path: "register",
+            element: <Register />,
+          },
+        ],
+>>>>>>> 8140b1ec27c778286d4c761b9cb114dd1999ef10
       },
     ],
   },
 ]);
+
 export default router;
