@@ -17,6 +17,7 @@ import AuthProvider from "./AuthProvider";
 import { Outlet } from "react-router-dom";
 import ProtectedRouter from "./ProtectedRouter";
 import ChatWithBot from "../pages/ChatWithBot";
+import OwnPC from "../pages/OwnPC";
 
 const AuthLayout = () => {
   return (
@@ -92,6 +93,10 @@ const router = createBrowserRouter([
           {
             path: "register",
             element: <Register />,
+          },
+          {
+            path: "OwnPC",
+            element: <OwnPC />,
           },
         ],
       },

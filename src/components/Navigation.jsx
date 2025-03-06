@@ -2,12 +2,13 @@ import React from "react";
 import Category from "./CategoryList";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 const Navigation = () => {
   return (
     <ul className="pr-14 py-5 border-1 border-r-blacks">
       <li className="flex justify-between hover:text-[#ff0000] cursor-pointer py-2 px-3 rounded-lg items-center">
-        <p>Build your own PC</p>
+        <Link to="/OwnPC">Build your own PC</Link>
       </li>
       <div className="dropdown dropdown-hover dropdown-right w-full">
         <li

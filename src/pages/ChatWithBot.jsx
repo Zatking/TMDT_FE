@@ -79,7 +79,7 @@ const ChatWithBot = () => {
                   </p>
                 )}
                 <p
-                  className={`p-4 h-fit text-white max-w-5xl ${
+                  className={`p-4 text-xl h-fit text-white max-w-5xl ${
                     msg.sender === "bot"
                       ? "bg-red-300 rounded-b-lg rounded-tr-lg ml-0"
                       : "bg-blue-500 rounded-b-lg rounded-tl-lg ml-6"

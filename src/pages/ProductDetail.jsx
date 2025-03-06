@@ -13,11 +13,12 @@ export default function ProductDetail() {
   const [dataPro, setDataPro] = useState([]);
   const stars = [];
   const { id } = useParams();
+  const apiUrl = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const res = await fetch(`https://node-tmdt.vercel.app/api/get-product`);
+        const res = await fetch(apiUrl + `/get-product`);
         const data = await res.json();
         setproduct(data.products.find((product) => product._id === id));
         setDataPro(data.products);
