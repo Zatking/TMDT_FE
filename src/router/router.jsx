@@ -13,9 +13,6 @@ import ErrorPage from "./ErrorPage";
 import ProductListAD from "../Admin/Products/ProductList.AD";
 import HomeAD from "../Admin/Homel.AD";
 import ProductDetailAD from "../Admin/Products/ProDetail.AD";
-<<<<<<< HEAD
-import ProductPage from "../pages/ProductPage";
-=======
 import AuthProvider from "./AuthProvider";
 import { Outlet } from "react-router-dom";
 import ProtectedRouter from "./ProtectedRouter";
@@ -28,7 +25,6 @@ const AuthLayout = () => {
     </AuthProvider>
   );
 };
->>>>>>> 8140b1ec27c778286d4c761b9cb114dd1999ef10
 
 const router = createBrowserRouter([
   {
@@ -54,57 +50,6 @@ const router = createBrowserRouter([
         ],
       },
       {
-<<<<<<< HEAD
-        path: "news",
-        element: <News />,
-      },
-      {
-        path: "contact",
-        element: <Contact />,
-      },
-      {
-        path: "profile",
-        element: <Profile />,
-      },
-      {
-        path: "productDetail/:id",
-        element: <ProductDetail />,
-      },
-      {
-        path: "product",
-        element: <Product />,
-      },
-      {
-        path: "productPage/:cate",
-        element: <ProductPage />,
-      },
-      {
-        path: "cart",
-        element: <Cart />,
-      },
-      {
-        path: "login",
-        element: <Login />,
-      },
-      {
-        path: "register",
-        element: <Register />,
-      },
-    ],
-  },
-  {
-    path: "/",
-    element: <HomeAD />,
-    errorElement: <ErrorPage />,
-    children: [
-      {
-        index: true,
-        element: <ProductListAD />,
-      },
-      {
-        path: "ProDetailAD/:id",
-        element: <ProductDetailAD />,
-=======
         path: "/",
         element: <App />,
         children: [
@@ -149,7 +94,6 @@ const router = createBrowserRouter([
             element: <Register />,
           },
         ],
->>>>>>> 8140b1ec27c778286d4c761b9cb114dd1999ef10
       },
     ],
   },
