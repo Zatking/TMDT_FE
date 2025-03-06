@@ -1,7 +1,9 @@
+import { Link } from "react-router-dom";
+
 export function VgaIntel() {
   return (
     <ul className="text-lg pr-20">
-      <li className="font-bold text-xl text-[#ff0000] px-3 mb-3">VGA Intel</li>
+      <Link to="/user/ProductPage/VGA" className="font-bold text-xl text-[#ff0000] px-3 mb-3">VGA Intel</Link>
       <li className="cursor-pointer px-3 hover:text-[#ff0000] border-x border-transparent hover:border-[#ff0000] rounded-lg">
         ARC A380
       </li>

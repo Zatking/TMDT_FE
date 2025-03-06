@@ -5,7 +5,7 @@ import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 
 const Navigation = () => {
   return (
-    <ul className="pr-14 py-5 border-1 border-r-black">
+    <ul className="pr-14 py-5 border-1 border-r-blacks">
       <li className="flex justify-between hover:text-[#ff0000] cursor-pointer py-2 px-3 rounded-lg items-center">
         <p>Build your own PC</p>
       </li>
@@ -13,7 +13,8 @@ const Navigation = () => {
         <li
           tabIndex={0}
           role="button"
-          className="flex justify-between hover:text-[#ff0000] cursor-pointer py-2 px-3 rounded-lg items-center">
+          className="flex justify-between hover:text-[#ff0000] cursor-pointer py-2 px-3 rounded-lg items-center"
+        >
           <p>Old components</p>
           <FontAwesomeIcon icon={faChevronRight} />
         </li>
@@ -23,7 +24,8 @@ const Navigation = () => {
         <li
           tabIndex={0}
           role="button"
-          className="flex justify-between hover:text-[#ff0000] cursor-pointer py-2 px-3 rounded-lg items-center">
+          className="flex justify-between hover:text-[#ff0000] cursor-pointer py-2 px-3 rounded-lg items-center"
+        >
           <p>Processor, Mainboard</p>
           <FontAwesomeIcon icon={faChevronRight} />
         </li>
