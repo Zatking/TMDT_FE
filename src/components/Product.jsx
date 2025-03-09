@@ -8,12 +8,13 @@ export default function Product() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const apiUrl = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     const fetchProducts = async () => {
       setLoading(true);
       try {
-        const res = await fetch("https://node-tmdt.vercel.app/api/get-product");
+        const res = await fetch(apiUrl + "/get-product");
         const data = await res.json();
         setProducts(data.products);
       } catch (error) {

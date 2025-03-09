@@ -22,6 +22,8 @@ const Login = () => {
     birthday: "Sat Mar 25 2000 07:00:00 GMT+0700",
   });
 
+  const apiUrl = import.meta.env.VITE_API_URL;
+
   const handleClick = () => {
     setRotation(rotation + 180);
     setScale(0.5);
@@ -39,7 +41,7 @@ const Login = () => {
     }
 
     try {
-      const response = await fetch("http://localhost:3000/api/login", {
+      const response = await fetch(apiUrl + "/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -68,7 +70,7 @@ const Login = () => {
   const handleRegister = async () => {
     console.log("register");
     try {
-      const response = await fetch("http://localhost:3000/api/register", {
+      const response = await fetch(apiUrl + "/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
