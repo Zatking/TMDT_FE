@@ -9,7 +9,6 @@ export default function ProductList() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const apiUrl = import.meta.env.VITE_API_URL;
-  const { cate } = useParams();
 
   return (
     <div className="w-full px-20 mt-20 bg-white">
@@ -24,7 +23,7 @@ export default function ProductList() {
           View All
         </button>
       </div>
-      <Product cate={cate} />
+      <Product page="home" />
     </div>
   );
 }

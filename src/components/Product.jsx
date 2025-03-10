@@ -51,15 +51,19 @@ export default function Product(props) {
 
   return (
     <div>
-      <div className="w-full grid grid-cols-4 gap-5">
+      <div
+        className={`w-full grid ${
+          props.page == "home" ? "grid-cols-4" : "grid-cols-3"
+        } gap-5`}>
         {products
+          .slice(0, props.page == "home" ? 8 : -1)
           .filter(
             (product) =>
-              product.Category.CateName == props.cate &&
+              (props.cate ? product.Category.CateName == props.cate : true) &&
               (props.brand ? product.Brand.BrandName == props.brand : true) &&
               product.ProName.includes(props.detail ? props.detail : "")
           )
-          // .slice(0, 8)
+          // .slice(0)
           .map((product) => (
             <Link
               to={"/productDetail/" + product._id}

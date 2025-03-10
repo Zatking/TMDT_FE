@@ -30,19 +30,13 @@ export default function ProductPage() {
     console.log("cate: ", cate);
   }, []);
 
-  const toVND = (amount) => {
-    return new Intl.NumberFormat("vi-VN", {
-      style: "currency",
-      currency: "VND",
-    }).format(amount);
-  };
   return (
     <div className="pt-5 px-20 grid grid-cols-4">
       <div className="col-span-1">
         <Navigation />
       </div>
       <div className="col-span-3">
-        <Product cate={cate} brand={brand} detail={detail} />
+        <Product page="product" cate={cate} brand={brand} detail={detail} />
       </div>
     </div>
   );
