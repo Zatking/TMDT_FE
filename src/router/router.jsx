@@ -4,6 +4,7 @@ import Contact from "../pages/Contact";
 import Profile from "../pages/Profile";
 import ProductDetail from "../pages/ProductDetail";
 import Product from "../components/Product";
+import ProductPage from "../pages/ProductPage";
 import Cart from "../pages/Cart";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
@@ -81,6 +82,10 @@ const router = createBrowserRouter([
           {
             path: "product",
             element: <Product />,
+          },
+          {
+            path: "productPage/:cate/:brand?/:detail?",
+            element: <ProductPage />,
           },
           {
             path: "cart",

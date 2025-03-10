@@ -1,45 +1,42 @@
+import { Link } from "react-router-dom";
+
 export function PsuByQuality() {
   return (
     <ul className="text-lg pr-20">
-      <li className="font-bold text-xl text-[#ff0000] mb-3 px-3">
-        PSU By Quality
+      <li>
+        <Link
+          to="/ProductPage/PSU"
+          className="font-bold text-xl text-[#ff0000] mb-3 px-3">
+          PSU
+        </Link>
       </li>
-      <li className="cursor-pointer px-3 hover:text-[#ff0000] border-x border-transparent hover:border-[#ff0000] rounded-lg">
-        Bronze
+      <li>
+        <Link
+          to="/ProductPage/PSU/Bronze"
+          className="cursor-pointer px-3 hover:text-[#ff0000] border-x border-transparent hover:border-[#ff0000] rounded-lg">
+          Bronze
+        </Link>
       </li>
-      <li className="cursor-pointer px-3 hover:text-[#ff0000] border-x border-transparent hover:border-[#ff0000] rounded-lg">
-        Gold
+      <li>
+        <Link
+          to="/ProductPage/PSU/Gold"
+          className="cursor-pointer px-3 hover:text-[#ff0000] border-x border-transparent hover:border-[#ff0000] rounded-lg">
+          Gold
+        </Link>
       </li>
-      <li className="cursor-pointer px-3 hover:text-[#ff0000] border-x border-transparent hover:border-[#ff0000] rounded-lg">
-        Plantium
+      <li>
+        <Link
+          to="/ProductPage/PSU/Platium"
+          className="cursor-pointer px-3 hover:text-[#ff0000] border-x border-transparent hover:border-[#ff0000] rounded-lg">
+          Platium
+        </Link>
       </li>
-    </ul>
-  );
-}
-
-export function PsuByWattage() {
-  return (
-    <ul className="text-lg pr-20">
-      <li className="font-bold text-xl text-[#ff0000] mb-3 px-3">
-        PSU By Wattage
-      </li>
-      <li className="cursor-pointer px-3 hover:text-[#ff0000] border-x border-transparent hover:border-[#ff0000] rounded-lg">
-        550W
-      </li>
-      <li className="cursor-pointer px-3 hover:text-[#ff0000] border-x border-transparent hover:border-[#ff0000] rounded-lg">
-        650W
-      </li>
-      <li className="cursor-pointer px-3 hover:text-[#ff0000] border-x border-transparent hover:border-[#ff0000] rounded-lg">
-        750W
-      </li>
-      <li className="cursor-pointer px-3 hover:text-[#ff0000] border-x border-transparent hover:border-[#ff0000] rounded-lg">
-        850W
-      </li>
-      <li className="cursor-pointer px-3 hover:text-[#ff0000] border-x border-transparent hover:border-[#ff0000] rounded-lg">
-        1000W
-      </li>
-      <li className="cursor-pointer px-3 hover:text-[#ff0000] border-x border-transparent hover:border-[#ff0000] rounded-lg">
-        1200W
+      <li>
+        <Link
+          to="/ProductPage/PSU/Titanium"
+          className="cursor-pointer px-3 hover:text-[#ff0000] border-x border-transparent hover:border-[#ff0000] rounded-lg">
+          Titanium
+        </Link>
       </li>
     </ul>
   );

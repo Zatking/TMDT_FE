@@ -1,7 +1,13 @@
+import { Link } from "react-router-dom";
+
 export default function Mainboard() {
   return (
     <ul className="text-lg pr-20">
-      <li className="font-bold text-xl text-[#ff0000] mb-3 px-3">Mainboard</li>
+      <Link
+        to="/ProductPage/Mainboard"
+        className="font-bold text-xl text-[#ff0000] mb-3 px-3">
+        Mainboard
+      </Link>
       <li className="cursor-pointer px-3 hover:text-[#ff0000] border-x border-transparent hover:border-[#ff0000] rounded-lg">
         ATX
       </li>
