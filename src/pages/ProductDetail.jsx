@@ -9,18 +9,33 @@ import {
 import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 export default function ProductDetail() {
-  const [product, setproduct] = useState({});
+  const [product, setProduct] = useState({});
   const [dataPro, setDataPro] = useState([]);
   const stars = [];
   const { id } = useParams();
   const apiUrl = import.meta.env.VITE_API_URL;
 
+  // useEffect(() => {
+  //   const fetchProduct = async () => {
+  //     try {
+  //       const res = await fetch(apiUrl + `/get-product`);
+  //       const data = await res.json();
+  //       setProduct(data.products.find((product) => product._id === id));
+  //       setDataPro(data.products);
+  //     } catch (error) {
+  //       console.log("error: ", error);
+  //     }
+  //   };
+  //   fetchProduct();
+  //   console.log(product);
+  // }, [id]);
+
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const res = await fetch(apiUrl + `/get-product`);
+        const res = await fetch("https://node-tmdt.vercel.app/api/get-product");
         const data = await res.json();
-        setproduct(data.products.find((product) => product._id === id));
+        setProduct(data.products.find((product) => product._id === id));
         setDataPro(data.products);
       } catch (error) {
         console.log("error: ", error);
@@ -85,15 +100,13 @@ export default function ProductDetail() {
             </p>
             <p
               id="price"
-              className="text-4xl text-[#ff0000] font-semibold mb-10"
-            >
+              className="text-4xl text-[#ff0000] font-semibold mb-10">
               {toVND(product.Price)}
             </p>
             <div className="grid grid-cols-2 gap-5">
               <button
                 to="/cart"
-                className="w-full text-center py-2 border-4 border-[#ff0000] bg-[#ff0000] hover:bg-transparent text-[#fff] hover:text-[#ff0000] font-semibold text-xl rounded-xl"
-              >
+                className="w-full text-center py-2 border-4 border-[#ff0000] bg-[#ff0000] hover:bg-transparent text-[#fff] hover:text-[#ff0000] font-semibold text-xl rounded-xl">
                 Mua ngay
                 <br />
                 <p className="text-sm font-normal mt-1">
@@ -105,22 +118,23 @@ export default function ProductDetail() {
                 Add to cart
               </button>
             </div>
-            <p className="text-xl font-bold my-2 mt-6">
-              - Nhà sản xuất: {product.Brand?.BrandName}
+            <p className="my-2 mt-6">
+              <span className="text-xl font-bold">- Nhà sản xuất:</span>
+              <span className="text-xl"> {product.Brand?.BrandName}</span>
             </p>
-            <div className="my-2">
-              <span className="text-xl font-bold">- Loại:</span>
+            <p className="my-2">
+              <span className="text-xl font-bold">- Phân loại:</span>
               <span className="text-xl"> {product.Category?.CateName}</span>
-            </div>
-            <div className="my-2">
+            </p>
+            <p className="my-2">
               <span className="text-xl font-bold">- Mã sản phẩm:</span>
-              <span className="text-xl"> {"VGA-" + product._id}</span>
-            </div>
-            <div className="my-2">
+              <span className="text-xl"> {product._id}</span>
+            </p>
+            <p className="my-2">
               <span className="text-xl font-bold">- Bảo hành:</span>
               <span className="text-xl"> {"36 tháng"}</span>
-            </div>
-            <div className="my-4 w-full border rounded-lg">
+            </p>
+            <div className="my-4 w-full border rounded-lg overflow-hidden">
               <p className="w-full p-3 text-2xl text-black font-bold bg-slate-300">
                 Khuyễn mãi
               </p>
@@ -134,7 +148,7 @@ export default function ProductDetail() {
             </div>
           </div>
         </div>
-        <div className=" w-[90%] mx-20 rounded-lg grid grid-cols-4 ">
+        <div className="w-[90%] mx-20 rounded-lg grid grid-cols-4">
           <div className="bg-white p-4 mr-2 col-span-3">
             <p className="text-2xl font-bold my-4">Thông tin sản phẩm</p>
             <div className="">
@@ -158,8 +172,7 @@ export default function ProductDetail() {
                   <Link
                     to={"/productDetail" + pro._id}
                     key={pro._id}
-                    className=""
-                  >
+                    className="">
                     <div className="grid grid-cols-12 h-fit items-center gap-4 ">
                       <div className="col-span-3">
                         <img src={pro.Images} alt="" className="w-fit h-fit" />

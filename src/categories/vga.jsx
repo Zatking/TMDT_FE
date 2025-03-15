@@ -3,7 +3,11 @@ import { Link } from "react-router-dom";
 export function VgaIntel() {
   return (
     <ul className="text-lg pr-20">
-      <Link to="/user/ProductPage/VGA" className="font-bold text-xl text-[#ff0000] px-3 mb-3">VGA Intel</Link>
+      <Link
+        to="/ProductPage/VGA/Intel"
+        className="font-bold text-xl text-[#ff0000] px-3 mb-3">
+        VGA Intel
+      </Link>
       <li className="cursor-pointer px-3 hover:text-[#ff0000] border-x border-transparent hover:border-[#ff0000] rounded-lg">
         ARC A380
       </li>
@@ -23,7 +27,11 @@ export function VgaIntel() {
 export function VgaAMD() {
   return (
     <ul className="text-lg pr-20">
-      <li className="font-bold text-xl text-[#ff0000] px-3 mb-3">VGA AMD</li>
+      <Link
+        to="/ProductPage/VGA/AMD"
+        className="font-bold text-xl text-[#ff0000] px-3 mb-3">
+        VGA AMD
+      </Link>
       <li className="cursor-pointer px-3 hover:text-[#ff0000] border-x border-transparent hover:border-[#ff0000] rounded-lg">
         Radeon 500 series
       </li>
@@ -55,7 +63,11 @@ export function VgaAMD() {
 export function VgaNvidia() {
   return (
     <ul className="text-lg pr-20">
-      <li className="font-bold text-xl text-[#ff0000] px-3 mb-3">VGA Nvidia</li>
+      <Link
+        to="/ProductPage/VGA"
+        className="font-bold text-xl text-[#ff0000] px-3 mb-3">
+        VGA Nvidia
+      </Link>
       <li className="cursor-pointer px-3 hover:text-[#ff0000] border-x border-transparent hover:border-[#ff0000] rounded-lg">
         RTX 1000 series
       </li>
