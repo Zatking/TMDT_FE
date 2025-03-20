@@ -81,8 +81,7 @@ const InforBuyer = () => {
           />
           <span
             id="name"
-            className="text-black absolute peer-focus:-translate-y-5 transition-all duration-500 ease-linear rounded-t-lg px-1 ml-2 bg-[#fff]"
-          >
+            className="text-black absolute peer-focus:-translate-y-5 transition-all duration-500 ease-linear rounded-t-lg px-1 ml-2 bg-[#fff]">
             Nhập họ tên
           </span>
         </div>
@@ -96,8 +95,7 @@ const InforBuyer = () => {
           />
           <span
             id="sdt"
-            className="text-black absolute peer-focus:-translate-y-5 transition-all duration-500 ease-linear rounded-t-lg px-1 ml-2 bg-[#fff]"
-          >
+            className="text-black absolute peer-focus:-translate-y-5 transition-all duration-500 ease-linear rounded-t-lg px-1 ml-2 bg-[#fff]">
             Nhập số điện thoại
           </span>
         </div>
@@ -133,8 +131,7 @@ const InforBuyer = () => {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
-            className="my-5 relative flex items-center"
-          >
+            className="my-5 relative flex items-center">
             <input
               className="bg-[#fff] bg-opacity-60 w-full outline-none px-3 py-2 peer shadow-sm shadow-[#ff0000] rounded-lg"
               type="text"
@@ -142,17 +139,19 @@ const InforBuyer = () => {
             />
             <span
               id="address"
-              className="text-black absolute peer-focus:-translate-y-5 transition-all duration-500 ease-linear rounded-t-lg px-1 ml-2 bg-[#fff]"
-            >
+              className="text-black absolute peer-focus:-translate-y-5 transition-all duration-500 ease-linear rounded-t-lg px-1 ml-2 bg-[#fff]">
               Địa chỉ
             </span>
+          </motion.div>
+          <motion.div>
+            <iframe
+              src={`https://www.google.com/maps?q=${infor.address}&output=embed`}></iframe>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
-            className="my-5 mt-3 relative flex items-center"
-          >
+            className="my-5 mt-3 relative flex items-center">
             <input
               className="bg-[#fff] bg-opacity-60 w-full outline-none px-3 py-2 peer shadow-sm shadow-[#ff0000] rounded-lg"
               type="text"
@@ -162,8 +161,7 @@ const InforBuyer = () => {
             />
             <span
               id="note"
-              className="text-black absolute peer-focus:-translate-y-5 transition-all duration-500 ease-linear rounded-t-lg px-1 ml-2 bg-[#fff]"
-            >
+              className="text-black absolute peer-focus:-translate-y-5 transition-all duration-500 ease-linear rounded-t-lg px-1 ml-2 bg-[#fff]">
               Ghi chú
             </span>
           </motion.div>

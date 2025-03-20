@@ -12,9 +12,16 @@ import {
   faHeart as solidHeart,
   faRobot,
 } from "@fortawesome/free-solid-svg-icons";
+import { useEffect, useState } from "react";
 
 const Header = () => {
+  const [cartList, setCartList] = useState([]);
   const location = useLocation();
+
+  useEffect(() => {
+    setCartList(localStorage.getItem("cartList", cartList));
+  }, [cartList]);
+
   return (
     <div className="grid grid-cols-5 h-20 px-20 border border-b-black items-center static bg-[#fff]">
       <p className="font-bold text-3xl text-[#ff0000]">Oggy</p>
@@ -81,13 +88,16 @@ const Header = () => {
           icon={regularHeart}
           className="text-xl text-[#ff0000]"
         />
-        <Link to="/cart">
+        <Link to="/cart" className="relative">
           <FontAwesomeIcon
             icon={faCartShopping}
             className={`${
               location.pathname == "/cart" ? "text-[#ff0000]" : ""
             } text-xl mt-1 hover:text-[#ff0000]`}
           />
+          <div className="absolute -top-2 -right-2 rounded-full bg-[#ff0000] border-2 border-[#fff] w-5 h-5 flex items-center justify-center text-[#fff] text-xs">
+            {cartList ? cartList.length : 0}
+          </div>
         </Link>
         <div id="userProfile" className="text-xl hover:text-[#ff0000]">
           <FontAwesomeIcon icon={faUser} />
