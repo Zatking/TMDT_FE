@@ -41,6 +41,13 @@ const Cart = () => {
     },
   ]);
 
+  const toVND = (amount) => {
+    return new Intl.NumberFormat("vi-VN", {
+      style: "currency",
+      currency: "VND",
+    }).format(amount);
+  };
+
   const [counts, setCounts] = useState(dbfake.map((item) => item.count));
 
   const handleAdd = (index) => {
@@ -62,8 +69,7 @@ const Cart = () => {
           <div className="w-1/2 grid grid-cols-4 items-center">
             <span
               className="text-center"
-              onClick={() => (pages == 2 ? setPages(1) : null)}
-            >
+              onClick={() => (pages == 2 ? setPages(1) : null)}>
               <FontAwesomeIcon
                 icon={faSuitcase}
                 style={{ fontSize: "25px" }}
@@ -74,8 +80,7 @@ const Cart = () => {
             </span>
             <span
               className="text-center"
-              onClick={() => (pages == 3 ? setPages(2) : null)}
-            >
+              onClick={() => (pages == 3 ? setPages(2) : null)}>
               <FontAwesomeIcon
                 icon={faAddressCard}
                 style={{ fontSize: "25px" }}
@@ -86,8 +91,7 @@ const Cart = () => {
             </span>
             <span
               className="text-center"
-              onClick={() => (pages == 4 ? setPages(3) : null)}
-            >
+              onClick={() => (pages == 4 ? setPages(3) : null)}>
               <FontAwesomeIcon
                 icon={faCreditCard}
                 style={{ fontSize: "25px" }}
@@ -109,8 +113,7 @@ const Cart = () => {
               return (
                 <div
                   key={item.id}
-                  className="grid grid-cols-12 gap-0 m-2 my-10"
-                >
+                  className="grid grid-cols-12 gap-0 m-2 my-10">
                   <img
                     src={item.image}
                     className="col-span-2 h-24 w-full object-cover border rounded-md"
@@ -127,8 +130,7 @@ const Cart = () => {
                         className={`${
                           counts[index] < 2 ? "text-slate-300" : "text-black"
                         } text-center text-xl  rounded-l-sm w-fit px-4 py-1 h-fit border`}
-                        onClick={() => handleSubtract(index)}
-                      >
+                        onClick={() => handleSubtract(index)}>
                         -
                       </button>
                       <span className="text-black text-center text-sm py-2 w-fit px-6 h-fit border">
@@ -138,8 +140,7 @@ const Cart = () => {
                         className={`${
                           counts[index] > 9 ? "text-slate-300" : "text-black"
                         } text-center text-xl  rounded-l-sm w-fit px-4 py-1 h-fit border`}
-                        onClick={() => handleAdd(index)}
-                      >
+                        onClick={() => handleAdd(index)}>
                         +
                       </button>
                     </div>
@@ -148,8 +149,7 @@ const Cart = () => {
                     className="col-span-2 h-fit p-4 bg-red-500 m-2 rounded-md"
                     onClick={() =>
                       setDbfake(dbfake.filter((item, i) => i !== index))
-                    }
-                  >
+                    }>
                     <FontAwesomeIcon
                       icon={faTrash}
                       style={{ color: "white" }}
@@ -166,8 +166,7 @@ const Cart = () => {
         <div
           className={`p-4 border-b grid grid-cols-12  ${
             pages === 4 ? "hidden" : " "
-          }`}
-        >
+          }`}>
           <input
             placeholder="Nhập mã voucher"
             className="border outline-none p-2 rounded-lg col-span-10 "
@@ -196,15 +195,13 @@ const Cart = () => {
         <div
           className={`w-full px-4 flex justify-center ${
             pages === 4 ? "hidden" : " "
-          }`}
-        >
+          }`}>
           <button
             className="w-full my-2  rounded-lg p-4 text-2xl text-white bg-red-500 font-serif"
             onClick={() => (
               pages === 4 ? setPages(4) : setPages(pages + 1),
               console.log(pages)
-            )}
-          >
+            )}>
             Đặt hàng ngay
           </button>
         </div>

@@ -9,6 +9,8 @@ export default function Product(props) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const apiUrl = import.meta.env.VITE_API_URL;
+  // const [cartProduct, setCartProduct] = useState({});
+  const [cartList, setCartList] = useState(new Array());
 
   // useEffect(() => {
   //   const fetchProducts = async () => {
@@ -25,6 +27,15 @@ export default function Product(props) {
   //   fetchProducts();
   //   setLoading(false);
   // }, []);
+
+  useEffect(() => {
+    setCartList(localStorage.getItem("cartList"));
+    console.log("list: " + cartList);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("cartList", cartList);
+  }, [cartList]);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -74,7 +85,11 @@ export default function Product(props) {
                 className={`w-full h-[19vw] relative rounded-md overflow-hidden`}>
                 <img src={product.Images[0]} alt="" />
                 <Link
-                  to={"/cart"}
+                  onClick={() => {
+                    setCartList([...cartList, product]);
+                    localStorage.setItem("cartList", cartList);
+                    console.log(cartList);
+                  }}
                   className="group-hover:right-0 absolute transition-all duration-500 ease-in-out right-[-150px] bg-[#ff0000] text-[#fff] py-2 px-5 bottom-0 cursor-pointer bg-opacity-75 hover:bg-opacity-100 rounded-tl-lg">
                   <FontAwesomeIcon icon={faCartShopping} />
                   Add to cart
