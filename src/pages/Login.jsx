@@ -5,6 +5,7 @@ import google from "../assets/google.png";
 import microsoft from "../assets/microsoft.png";
 import { motion } from "framer-motion";
 import router from "../router/router";
+import AuthenAPI from "../api/authen";
 
 const Login = () => {
   const [rotation, setRotation] = useState(0);
@@ -22,8 +23,6 @@ const Login = () => {
     birthday: "Sat Mar 25 2000 07:00:00 GMT+0700",
   });
 
-  const apiUrl = import.meta.env.VITE_API_URL;
-
   const handleClick = () => {
     setRotation(rotation + 180);
     setScale(0.5);
@@ -34,67 +33,46 @@ const Login = () => {
   };
 
   const handleLogin = async () => {
-    console.log("login");
-
-    if (!email || !password) {
-      return alert("Vui lòng nhập đầy đủ thông tin.");
-    }
-
     try {
-      const response = await fetch(apiUrl + "/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        const token = data.role;
-        localStorage.setItem("Token", token);
-        console.log("Đăng nhập thành công.");
-        if (token === "admin") {
-          router.navigate("/AD");
-        } else {
-          router.navigate("/");
-        }
+      const result = await AuthenAPI.login(email, password);
+      if (result != "failed") {
+        result == "admin" ? router.navigate("/AD") : router.navigate("/");
       } else {
-        throw new Error("Đăng nhập không thành công.");
+        alert("Đăng nhập không thành công.");
       }
     } catch (error) {
       console.log(error);
     }
   };
 
-  const handleRegister = async () => {
-    console.log("register");
-    try {
-      const response = await fetch(apiUrl + "/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(
-          register.email,
-          register.password,
-          register.phone,
-          register.address,
-          register.birthday
-        ),
-      });
-      if (response.ok) {
-        const data = await response.json();
-        console.log(data);
-        console.log("Đăng ký thành công.");
-        router.navigate("/");
-      } else {
-        throw new Error("Đăng ký không thành công.");
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const handleRegister = async () => {
+  //   console.log("register");
+  //   try {
+  //     const response = await fetch(apiUrl + "/register", {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify(
+  //         register.email,
+  //         register.password,
+  //         register.phone,
+  //         register.address,
+  //         register.birthday
+  //       ),
+  //     });
+  //     if (response.ok) {
+  //       const data = await response.json();
+  //       console.log(data);
+  //       console.log("Đăng ký thành công.");
+  //       router.navigate("/");
+  //     } else {
+  //       throw new Error("Đăng ký không thành công.");
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   return (
     <div

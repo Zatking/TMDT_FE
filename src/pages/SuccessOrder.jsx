@@ -5,6 +5,7 @@ import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
 
 const SuccessOrder = () => {
   useEffect(() => {
+    localStorage.removeItem("cart");
     setTimeout(() => {
       router.navigate("/");
     }, 3000);

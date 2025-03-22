@@ -8,12 +8,14 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { addCart } from "../hooks/addCart";
+import productsAPI from "../api/product";
+
 export default function ProductDetail() {
   const [product, setProduct] = useState({});
   const [dataPro, setDataPro] = useState([]);
   const stars = [];
   const { id } = useParams();
-  const apiUrl = import.meta.env.VITE_API_URL;
 
   // useEffect(() => {
   //   const fetchProduct = async () => {
@@ -33,8 +35,7 @@ export default function ProductDetail() {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const res = await fetch("https://node-tmdt.vercel.app/api/get-product");
-        const data = await res.json();
+        const data = await productsAPI.getProducts();
         setProduct(data.products.find((product) => product._id === id));
         setDataPro(data.products);
       } catch (error) {
@@ -100,20 +101,25 @@ export default function ProductDetail() {
             </p>
             <p
               id="price"
-              className="text-4xl text-[#ff0000] font-semibold mb-10">
+              className="text-4xl text-[#ff0000] font-semibold mb-10"
+            >
               {toVND(product.Price)}
             </p>
             <div className="grid grid-cols-2 gap-5">
               <button
                 to="/cart"
-                className="w-full text-center py-2 border-4 border-[#ff0000] bg-[#ff0000] hover:bg-transparent text-[#fff] hover:text-[#ff0000] font-semibold text-xl rounded-xl">
+                className="w-full text-center py-2 border-4 border-[#ff0000] bg-[#ff0000] hover:bg-transparent text-[#fff] hover:text-[#ff0000] font-semibold text-xl rounded-xl"
+              >
                 Mua ngay
                 <br />
                 <p className="text-sm font-normal mt-1">
                   Giao tận nơi hoặc nhận tại cửa hàng
                 </p>
               </button>
-              <button className="w-full text-center flex items-center justify-center py-2 border-4 border-[#ff0000] bg-[#ff0000] hover:bg-transparent text-[#fff] hover:text-[#ff0000] font-semibold text-xl rounded-xl">
+              <button
+                className="w-full text-center flex items-center justify-center py-2 border-4 border-[#ff0000] bg-[#ff0000] hover:bg-transparent text-[#fff] hover:text-[#ff0000] font-semibold text-xl rounded-xl"
+                onClick={() => addCart([product])}
+              >
                 <FontAwesomeIcon icon={faCartShopping} className="mr-2" />
                 Add to cart
               </button>
@@ -172,7 +178,8 @@ export default function ProductDetail() {
                   <Link
                     to={"/productDetail" + pro._id}
                     key={pro._id}
-                    className="">
+                    className=""
+                  >
                     <div className="grid grid-cols-12 h-fit items-center gap-4 ">
                       <div className="col-span-3">
                         <img src={pro.Images} alt="" className="w-fit h-fit" />

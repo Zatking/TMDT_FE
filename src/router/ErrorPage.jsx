@@ -5,12 +5,12 @@ export default function ErrorPage() {
   const error = useRouteError();
   console.error(error);
 
-  useEffect(() => {
-    setTimeout(() => {
-      window.location.href = "/";
-    }, 5000);
-  }),
-    [];
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     window.location.href = "/";
+  //   }, 5000);
+  // }),
+  //   [];
   return (
     <div id="error-page" className="h-screen translate-y-1/3">
       <h1 className="text-center text-6xl text-red-600 font-extrabold">
