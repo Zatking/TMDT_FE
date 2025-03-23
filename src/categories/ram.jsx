@@ -1,46 +1,46 @@
 import { Link } from "react-router-dom";
 
-export function PsuByQuality() {
+export function Ram() {
   return (
     <ul className="text-lg pr-20">
       <li>
         <Link
-          to="/ProductPage/PSU"
+          to="/ProductPage/RAM"
           className="font-bold text-xl text-[#ff0000] mb-3 px-3 hover:bg-transparent py-0"
         >
-          PSU
+          Ram
         </Link>
       </li>
       <li>
         <Link
-          to="/ProductPage/PSU/Bronze"
+          to="/ProductPage/RAM"
           className="cursor-pointer px-3 hover:text-[#ff0000] border-x border-transparent hover:border-[#ff0000] rounded-lg hover:bg-transparent py-0"
         >
-          Bronze
+          8GB
         </Link>
       </li>
       <li>
         <Link
-          to="/ProductPage/PSU/Gold"
+          to="/ProductPage/RAM"
           className="cursor-pointer px-3 hover:text-[#ff0000] border-x border-transparent hover:border-[#ff0000] rounded-lg hover:bg-transparent py-0"
         >
-          Gold
+          16GB
         </Link>
       </li>
       <li>
         <Link
-          to="/ProductPage/PSU/Platium"
+          to="/ProductPage/RAM"
           className="cursor-pointer px-3 hover:text-[#ff0000] border-x border-transparent hover:border-[#ff0000] rounded-lg hover:bg-transparent py-0"
         >
-          Platium
+          32GB
         </Link>
       </li>
       <li>
         <Link
-          to="/ProductPage/PSU/Titanium"
+          to="/ProductPage/RAM"
           className="cursor-pointer px-3 hover:text-[#ff0000] border-x border-transparent hover:border-[#ff0000] rounded-lg hover:bg-transparent py-0"
         >
-          Titanium
+          64GB
         </Link>
       </li>
     </ul>

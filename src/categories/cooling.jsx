@@ -1,46 +1,62 @@
 import { Link } from "react-router-dom";
 
-export function PsuByQuality() {
+export function Cooling() {
   return (
     <ul className="text-lg pr-20">
       <li>
         <Link
-          to="/ProductPage/PSU"
+          to="/ProductPage/Cooling"
           className="font-bold text-xl text-[#ff0000] mb-3 px-3 hover:bg-transparent py-0"
         >
-          PSU
+          Cooling
         </Link>
       </li>
       <li>
         <Link
-          to="/ProductPage/PSU/Bronze"
+          to="/ProductPage/Cooling"
           className="cursor-pointer px-3 hover:text-[#ff0000] border-x border-transparent hover:border-[#ff0000] rounded-lg hover:bg-transparent py-0"
         >
-          Bronze
+          MSI
         </Link>
       </li>
       <li>
         <Link
-          to="/ProductPage/PSU/Gold"
+          to="/ProductPage/Cooling"
           className="cursor-pointer px-3 hover:text-[#ff0000] border-x border-transparent hover:border-[#ff0000] rounded-lg hover:bg-transparent py-0"
         >
-          Gold
+          Gigabyte
         </Link>
       </li>
       <li>
         <Link
-          to="/ProductPage/PSU/Platium"
+          to="/ProductPage/Cooling"
           className="cursor-pointer px-3 hover:text-[#ff0000] border-x border-transparent hover:border-[#ff0000] rounded-lg hover:bg-transparent py-0"
         >
-          Platium
+          Master
         </Link>
       </li>
       <li>
         <Link
-          to="/ProductPage/PSU/Titanium"
+          to="/ProductPage/Cooling"
           className="cursor-pointer px-3 hover:text-[#ff0000] border-x border-transparent hover:border-[#ff0000] rounded-lg hover:bg-transparent py-0"
         >
-          Titanium
+          ASUS
+        </Link>
+      </li>
+      <li>
+        <Link
+          to="/ProductPage/Cooling"
+          className="cursor-pointer px-3 hover:text-[#ff0000] border-x border-transparent hover:border-[#ff0000] rounded-lg hover:bg-transparent py-0"
+        >
+          Noctua
+        </Link>
+      </li>
+      <li>
+        <Link
+          to="/ProductPage/Cooling"
+          className="cursor-pointer px-3 hover:text-[#ff0000] border-x border-transparent hover:border-[#ff0000] rounded-lg hover:bg-transparent py-0"
+        >
+          Corsair
         </Link>
       </li>
     </ul>

@@ -5,7 +5,8 @@ export function VgaIntel() {
     <ul className="text-lg pr-20">
       <Link
         to="/ProductPage/VGA/Intel"
-        className="font-bold text-xl text-[#ff0000] px-3 mb-3">
+        className="font-bold text-xl text-[#ff0000] px-3 mb-3"
+      >
         VGA Intel
       </Link>
       <li className="cursor-pointer px-3 hover:text-[#ff0000] border-x border-transparent hover:border-[#ff0000] rounded-lg">
@@ -29,7 +30,8 @@ export function VgaAMD() {
     <ul className="text-lg pr-20">
       <Link
         to="/ProductPage/VGA/AMD"
-        className="font-bold text-xl text-[#ff0000] px-3 mb-3">
+        className="font-bold text-xl text-[#ff0000] px-3 mb-3"
+      >
         VGA AMD
       </Link>
       <li className="cursor-pointer px-3 hover:text-[#ff0000] border-x border-transparent hover:border-[#ff0000] rounded-lg">
@@ -65,7 +67,8 @@ export function VgaNvidia() {
     <ul className="text-lg pr-20">
       <Link
         to="/ProductPage/VGA"
-        className="font-bold text-xl text-[#ff0000] px-3 mb-3">
+        className="font-bold text-xl text-[#ff0000] px-3 mb-3"
+      >
         VGA Nvidia
       </Link>
       <li className="cursor-pointer px-3 hover:text-[#ff0000] border-x border-transparent hover:border-[#ff0000] rounded-lg">

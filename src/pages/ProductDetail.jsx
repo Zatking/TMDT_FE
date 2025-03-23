@@ -118,7 +118,7 @@ export default function ProductDetail() {
               </button>
               <button
                 className="w-full text-center flex items-center justify-center py-2 border-4 border-[#ff0000] bg-[#ff0000] hover:bg-transparent text-[#fff] hover:text-[#ff0000] font-semibold text-xl rounded-xl"
-                onClick={() => addCart([product])}
+                onClick={() => addCart(product)}
               >
                 <FontAwesomeIcon icon={faCartShopping} className="mr-2" />
                 Add to cart

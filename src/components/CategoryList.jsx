@@ -1,9 +1,19 @@
 import React from "react";
 import { Intel, AMD } from "../categories/cpu";
+import {
+  Storage,
+  StorageCorsair,
+  StorageKingston,
+  StorageSamSung,
+  StorageMSI,
+} from "../categories/storage";
+import { Ram } from "../categories/ram";
+import { Case } from "../categories/case";
 import { VgaNvidia, VgaIntel, VgaAMD } from "../categories/vga";
 import Mainboard from "../categories/mainboard";
 import { PsuByQuality } from "../categories/psu";
 import PropTypes from "prop-types";
+import { Cooling } from "../categories/cooling";
 CategoryList.propTypes = {
   cate: PropTypes.string,
 };
@@ -27,8 +37,20 @@ export default function CategoryList(props) {
           <VgaAMD />
           <PsuByQuality />
         </>
+      ) : props.cate == "storage" ? (
+        <>
+          <Storage />
+          <StorageCorsair />
+          <StorageKingston />
+          <StorageSamSung />
+          <StorageMSI />
+          <Ram />
+        </>
       ) : (
-        <></>
+        <>
+          <Case />
+          <Cooling />
+        </>
       )}
     </div>
   );

@@ -2,6 +2,7 @@ const apiUrl = import.meta.env.VITE_API_URL;
 const apiPrivate = import.meta.env.VITE_API_PRIVATE;
 
 class ProductsAPI {
+  //get product
   async getProducts() {
     try {
       const res = await fetch(apiUrl + "/get-product");
@@ -11,6 +12,8 @@ class ProductsAPI {
       console.log("error: ", error);
     }
   }
+
+  //order
   async orderProduct(
     productIds,
     quantities,
