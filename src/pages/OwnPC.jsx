@@ -7,7 +7,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import { GoogleGenerativeAI } from "@google/generative-ai";
-
+import { useNavigate } from "react-router-dom";
 const OwnPC = () => {
   const [componentsPC, setComponentsPC] = useState([]);
   const [cateName, setCatName] = useState("");
@@ -15,7 +15,7 @@ const OwnPC = () => {
   const [Brand, setBrand] = useState("All");
   const apiUrl = import.meta.env.VITE_API_URL;
   const genAI = new GoogleGenerativeAI(import.meta.env.VITE_AI_KEY);
-  const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+  const router = useNavigate();
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -34,8 +34,10 @@ const OwnPC = () => {
   const Advisory = async () => {
     try {
       const name = componentsPC.map((item) => item.Name).join(", ");
-
-      console.log("Danh sách linh kiện:", name);
+      if (!name) {
+        alert("Chưa chọn linh kiện nào!");
+        return;
+      }
 
       const prompt = `Bạn check xem các phần của bộ PC này có phù hợp tương thích với nhau hay không nhé! Danh sách linh kiện: ${name}`;
 
@@ -51,7 +53,8 @@ const OwnPC = () => {
       const result =
         response?.response?.candidates?.[0]?.content?.parts?.[0]?.text || "";
 
-      console.log("Kết quả AI:", result);
+      localStorage.setItem("advisory", result);
+      router("/chatWithBot");
     } catch (error) {
       console.error("Lỗi:", error);
     }

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faXmark } from "@fortawesome/free-solid-svg-icons";
+import ProductAD from "../../api/products.admin";
 
 const DetailProAD = () => {
   const [data, setData] = useState([]);
@@ -10,10 +11,7 @@ const DetailProAD = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await fetch(
-          `https://node-tmdt.vercel.app/api/get-product`
-        );
-        const data = await response.json();
+        const data = await ProductAD.getProducts();
         setData(data.products.find((item) => item._id === id));
       } catch (error) {
         console.log(error);

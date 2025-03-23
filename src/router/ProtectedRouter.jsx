@@ -12,6 +12,7 @@ const ProtectedRouter = ({ children }) => {
   const logout = () => {
     setUser(null);
     localStorage.removeItem("Token");
+    localStorage.removeItem("lastPath");
   };
 
   return (

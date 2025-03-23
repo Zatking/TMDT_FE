@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import ProductAD from "../../api/products.admin";
 
 const AddPro = () => {
   const [products, setProducts] = useState({
@@ -26,15 +27,8 @@ const AddPro = () => {
 
     const fetchAddPro = async () => {
       try {
-        const response = await fetch(
-          "https://node-tmdt.vercel.app/api/createProduct",
-          {
-            method: "POST",
-            body: formData,
-          }
-        );
-        const data = await response.json();
-        console.log(data);
+        const result = await ProductAD.createProduct(formData);
+        console.log(result);
       } catch (error) {
         console.log(error);
       }
