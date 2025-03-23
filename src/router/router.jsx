@@ -19,6 +19,7 @@ import { Outlet } from "react-router-dom";
 import ProtectedRouter from "./ProtectedRouter";
 import ChatWithBot from "../pages/ChatWithBot";
 import OwnPC from "../pages/OwnPC";
+import AddPro from "../Admin/Products/AddPro.AD";
 
 const AuthLayout = () => {
   return (
@@ -49,6 +50,11 @@ const router = createBrowserRouter([
             path: "ProDetailAD/:id",
             element: <ProductDetailAD />,
           },
+          {
+            path: "AddPro",
+            element: <AddPro />,
+          }
+
         ],
       },
       {

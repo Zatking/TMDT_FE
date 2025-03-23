@@ -126,7 +126,7 @@ const ProductListAD = () => {
             )}
           </div>
 
-          <Link className="p-3 bg-green-600 text-white border border-green-600 rounded-lg hover:bg-white hover:text-green-800">
+          <Link className="p-3 bg-green-600 text-white border border-green-600 rounded-lg hover:bg-white hover:text-green-800" to="/AD/AddPro">
             Create Product
           </Link>
         </div>

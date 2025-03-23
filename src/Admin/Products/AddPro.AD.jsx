@@ -42,7 +42,10 @@ const AddPro = () => {
     fetchAddPro();
   };
 
-  return <div></div>;
+  return <div>
+
+    
+  </div>;
 };
 
 export default AddPro;
