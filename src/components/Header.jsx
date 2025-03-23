@@ -19,8 +19,9 @@ const Header = () => {
   const location = useLocation();
 
   useEffect(() => {
-    setCartList(localStorage.getItem("cartList", cartList));
-  }, [cartList]);
+    const cartData = JSON.parse(localStorage.getItem("cart")) || [];
+    setCartList(cartData);
+  }, []);
 
   return (
     <div className="grid grid-cols-5 h-20 px-20 border border-b-black items-center static bg-[#fff]">
@@ -30,21 +31,24 @@ const Header = () => {
           to="/"
           className={`flex ${
             location.pathname == "/" ? "text-[#ff0000] font-bold" : ""
-          } hover:text-[#ff0000] justify-center border-2 border-transparent hover:border-b-[#ff0000] cursor-pointer`}>
+          } hover:text-[#ff0000] justify-center border-2 border-transparent hover:border-b-[#ff0000] cursor-pointer`}
+        >
           Home
         </Link>
         <Link
           to="/news"
           className={`flex ${
             location.pathname == "/news" ? "text-[#ff0000] font-bold" : ""
-          } hover:text-[#ff0000] justify-center border-2 border-transparent hover:border-b-[#ff0000] cursor-pointer`}>
+          } hover:text-[#ff0000] justify-center border-2 border-transparent hover:border-b-[#ff0000] cursor-pointer`}
+        >
           News
         </Link>
         <Link
           to="/contact"
           className={`flex ${
             location.pathname == "/contact" ? "text-[#ff0000] font-bold" : ""
-          } hover:text-[#ff0000] justify-center border-2 border-transparent hover:border-b-[#ff0000] cursor-pointer`}>
+          } hover:text-[#ff0000] justify-center border-2 border-transparent hover:border-b-[#ff0000] cursor-pointer`}
+        >
           Contact
         </Link>
         {/* <Link
@@ -60,7 +64,8 @@ const Header = () => {
           className={`flex ${
             location.pathname == "/login" ? "text-[#ff0000] font-bold" : ""
           } hover:text-[#ff0000] justify-center border-2 border-transparent hover:border-b-[#ff0000] cursor-pointer`}
-          id="signInTxt">
+          id="signInTxt"
+        >
           Sign In
         </Link>
       </div>

@@ -2,14 +2,28 @@ import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaperPlane, faRobot } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+
 const ChatWithBot = () => {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
+  const advisory = localStorage.getItem("advisory");
+  const location = useLocation();
 
   useEffect(() => {
-    setMessages([
-      { sender: "bot", text: "Hi, I'm a bot. How can I help you?" },
-    ]);
+    return () => {
+      if (location.pathname !== "/chatWithBot") {
+        localStorage.removeItem("advisory");
+      }
+    };
+  }, [location]);
+
+  useEffect(() => {
+    advisory
+      ? setMessages([{ sender: "bot", text: advisory }])
+      : setMessages([
+          { sender: "bot", text: "Hi, I'm a bot. How can I help you?" },
+        ]);
     return () => {
       setMessages([]);
     };
