@@ -25,7 +25,7 @@ class ProductsAPI {
     Note
   ) {
     try {
-      const res = await fetch(apiPrivate + "/orderProduct", {
+      const res = await fetch(apiUrl + "/orderProduct", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

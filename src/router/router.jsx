@@ -20,6 +20,12 @@ import ProtectedRouter from "./ProtectedRouter";
 import ChatWithBot from "../pages/ChatWithBot";
 import OwnPC from "../pages/OwnPC";
 import AddPro from "../Admin/Products/AddPro.AD";
+import EditPro from "../Admin/Products/EditPro.AD";
+import CateList from "../Admin/Products/CateList.AD"
+import OderList from "../Admin/Products/OderList.AD";
+import StateList from "../Admin/Products/StateList.AD";
+import BrandList from "../Admin/Products/BrandList.AD";
+import OrderDetail from "../Admin/Products/OrderDetail.AD";
 
 const AuthLayout = () => {
   return (
@@ -53,8 +59,31 @@ const router = createBrowserRouter([
           {
             path: "AddPro",
             element: <AddPro />,
+          },
+          {
+            path: "EditPro/:id",
+            element: <EditPro />,
+          },
+          {
+            path: "CateList",
+            element: <CateList />,
+          },
+          {
+            path: "OderList",
+            element: <OderList />,
+          },
+          {
+            path: "StateList",
+            element: <StateList />,
+          },
+          {
+            path:"BrandList",
+            element:<BrandList/>
+          },
+          {
+            path:"OrderDetail/:id",
+            element:<OrderDetail/>
           }
-
         ],
       },
       {

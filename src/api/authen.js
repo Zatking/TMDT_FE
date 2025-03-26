@@ -8,7 +8,7 @@ class AuthenAPI {
     }
 
     try {
-      const response = await fetch(apiPrivate + "/login", {
+      const response = await fetch(apiUrl + "/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

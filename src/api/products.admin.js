@@ -26,5 +26,31 @@ class ProductAD {
     console.log("success", data);
     return data;
   }
+
+  async deleteProduct(id) {
+    try {
+      const response = await fetch(
+        `https://node-tmdt.vercel.app/api/deleteProduct/${id}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json", // Có thể bỏ nếu API không cần
+            // Authorization: `Bearer ${yourToken}`, // Thêm nếu API yêu cầu xác thực
+          },
+        }
+      );
+  
+      if (!response.ok) {
+        throw new Error(`Lỗi ${response.status}: Không thể xóa sản phẩm`);
+      }
+  
+      const data = await response.json();
+      console.log("Xóa sản phẩm thành công:", data);
+      return data;
+    } catch (error) {
+      console.error("Lỗi khi xóa sản phẩm:", error);
+      return { error: error.message };
+    }
+  }
 }
 export default new ProductAD();
