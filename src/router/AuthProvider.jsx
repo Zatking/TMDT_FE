@@ -12,6 +12,9 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const role = localStorage.getItem("Role");
     const lastPath = localStorage.getItem("lastPath");
+    if (!role || !role === "admin") {
+      navigate("/", { replace: true });
+    }
     if (!role && !lastPath) {
       navigate("/", { replace: true });
     } else if (role === "admin") {

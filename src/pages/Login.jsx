@@ -45,34 +45,34 @@ const Login = () => {
     }
   };
 
-  // const handleRegister = async () => {
-  //   console.log("register");
-  //   try {
-  //     const response = await fetch(apiUrl + "/register", {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify(
-  //         register.email,
-  //         register.password,
-  //         register.phone,
-  //         register.address,
-  //         register.birthday
-  //       ),
-  //     });
-  //     if (response.ok) {
-  //       const data = await response.json();
-  //       console.log(data);
-  //       console.log("Đăng ký thành công.");
-  //       router.navigate("/");
-  //     } else {
-  //       throw new Error("Đăng ký không thành công.");
-  //     }
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
+  const handleRegister = async () => {
+    console.log("register");
+    try {
+      const response = await fetch(apiUrl + "/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(
+          register.email,
+          register.password,
+          register.phone,
+          register.address,
+          register.birthday
+        ),
+      });
+      if (response.ok) {
+        const data = await response.json();
+        console.log("login", data);
+        console.log("Đăng ký thành công.");
+        router.navigate("/");
+      } else {
+        throw new Error("Đăng ký không thành công.");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div
