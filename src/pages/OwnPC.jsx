@@ -54,7 +54,7 @@ const OwnPC = () => {
         response?.response?.candidates?.[0]?.content?.parts?.[0]?.text || "";
 
       localStorage.setItem("advisory", result);
-      router("/chatWithBot");
+      router("/ChatBot");
     } catch (error) {
       console.error("Lỗi:", error);
     }
