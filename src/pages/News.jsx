@@ -7,7 +7,8 @@ const newsArticles = [
       "The latest GPU from XYZ company offers unprecedented performance and efficiency, making it a must-have for gamers and professionals alike.",
     date: "2023-10-01",
     author: "John Doe",
-    imageUrl: "https://example.com/gpu.jpg",
+    imageUrl:
+      "https://mona.media/wp-content/uploads/2022/12/chuc-nang-chinh-cua-gpu.png",
   },
   {
     title: "CPU Price Drop",
@@ -15,7 +16,7 @@ const newsArticles = [
       "Major price drop on ABC company's latest CPUs, making high performance more affordable for everyone. This is a great time to upgrade your system.",
     date: "2023-09-25",
     author: "Jane Smith",
-    imageUrl: "https://example.com/cpu.jpg",
+    imageUrl: "https://laptop88.vn//media/news/204_1.jpg",
   },
   {
     title: "New Motherboard Features",
@@ -23,7 +24,7 @@ const newsArticles = [
       "The latest motherboards now support faster RAM and more PCIe lanes, providing better performance and expandability for future upgrades.",
     date: "2023-09-20",
     author: "Alice Johnson",
-    imageUrl: "https://example.com/motherboard.jpg",
+    imageUrl: "https://i.ebayimg.com/images/g/yOEAAOSwG5Zlsizk/s-l400.jpg",
   },
   {
     title: "SSD Prices Drop",
@@ -31,7 +32,8 @@ const newsArticles = [
       "SSD prices have dropped significantly, making it a great time to upgrade your storage.",
     date: "2023-09-15",
     author: "Bob Brown",
-    imageUrl: "https://example.com/ssd.jpg",
+    imageUrl:
+      "https://kenhtinhoc.vn/wp-content/uploads/2023/10/o-cung-ssd-samsung-990-pro-pcie-gen-4-0-x4-nvme-v-nand-m-2-2280-1tb-mz-v9p1t0bw-6.jpg",
   },
   {
     title: "New RAM Technology",
@@ -39,7 +41,8 @@ const newsArticles = [
       "The latest RAM technology offers faster speeds and better performance for gaming and professional applications.",
     date: "2023-09-10",
     author: "Charlie Davis",
-    imageUrl: "https://example.com/ram.jpg",
+    imageUrl:
+      "https://bizweb.dktcdn.net/thumb/grande/100/329/122/products/trident-z-rgb-ddr4-01-11824290-9259-4c56-a542-f6ca5f77df0c-9324d08d-1200-4ea0-97b4-c48e88072f96-afc3b506-a982-4f37-96aa-38fe36ecdcd5.jpg?v=1741142410963",
   },
   {
     title: "Power Supply Units",
@@ -145,7 +148,8 @@ export default function News() {
       {currentArticles.map((article, index) => (
         <div
           key={index}
-          className="mb-8 p-6 bg-white rounded-lg shadow-md grid grid-cols-1 md:grid-cols-3 gap-4">
+          className="mb-8 p-6 bg-white rounded-lg shadow-md grid grid-cols-1 md:grid-cols-3 gap-4"
+        >
           <img
             src={article.imageUrl}
             alt={article.title}
@@ -172,7 +176,8 @@ export default function News() {
               currentPage === index + 1
                 ? "bg-[#ff0000] text-white"
                 : "bg-[#fff] text-[#ff0000]"
-            }`}>
+            }`}
+          >
             {index + 1}
           </button>
         ))}
