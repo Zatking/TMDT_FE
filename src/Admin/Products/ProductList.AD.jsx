@@ -84,6 +84,7 @@ const ProductListAD = () => {
   return (
     <div className="min-h-screen w-full bg-gradient-to-br from-gray-900 to-gray-800">
       <div className="container mx-auto px-4 py-8">
+        {/* Header Section */}
         <div className="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-gray-700 mb-8">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
             <div className="flex items-center space-x-4">
@@ -97,54 +98,9 @@ const ProductListAD = () => {
                 <p className="text-gray-400 mt-1">Quản lý và theo dõi sản phẩm của bạn</p>
               </div>
             </div>
-            <div className="flex flex-wrap items-center gap-4">
-              <div className="relative">
-                <div
-                  onClick={toggleshow}
-                  tabIndex={0}
-                  role="button"
-                  className="px-6 py-3 bg-gray-700/50 text-white rounded-xl font-semibold shadow-lg transition-all duration-300 flex items-center space-x-2 cursor-pointer hover:bg-gray-600/50 border border-gray-600 hover:border-blue-500"
-                >
-                  <FontAwesomeIcon icon={faBox} className="w-5 h-5 text-blue-400" />
-                  <span>Lọc theo danh mục</span>
-                  {show && (
-                    <ul className="absolute top-full right-0 mt-2 w-64 bg-gray-800 rounded-xl shadow-xl border border-gray-700 py-2 z-50">
-                      <li className="px-4 py-2 hover:bg-gray-700 cursor-pointer text-white">
-                        <p
-                          onClick={() => {
-                            setCate("all");
-                            setSelectedPage(1);
-                            setShow(false);
-                          }}
-                          className="w-full"
-                        >
-                          Tất cả sản phẩm
-                        </p>
-                      </li>
-                      {Array.from(
-                        new Set(products.map((pro) => pro.Category?.CateName))
-                      )
-                        .filter((cateName) => cateName)
-                        .map((cateName) => (
-                          <li
-                            key={cateName}
-                            className="px-4 py-2 hover:bg-gray-700 cursor-pointer text-white"
-                          >
-                            <p
-                              onClick={() => {
-                                setCate(cateName);
-                                setSelectedPage(1);
-                                setShow(false);
-                              }}
-                              className="w-full"
-                            >
-                              {cateName}
-                            </p>
-                          </li>
-                        ))}
-                    </ul>
-                  )}
-                </div>
+            <div className="flex items-center space-x-4">
+              <div className="px-6 py-3 bg-blue-500/20 text-blue-400 rounded-xl text-lg font-semibold shadow-lg border border-blue-500/30">
+                {filteredProducts.length} sản phẩm
               </div>
               <Link 
                 to="/AD/AddPro"
@@ -153,13 +109,11 @@ const ProductListAD = () => {
                 <FontAwesomeIcon icon={faPlus} className="w-5 h-5" />
                 <span>Thêm sản phẩm</span>
               </Link>
-              <div className="px-6 py-3 bg-blue-500/20 text-blue-400 rounded-xl text-lg font-semibold shadow-lg border border-blue-500/30">
-                {filteredProducts.length} sản phẩm
-              </div>
             </div>
           </div>
         </div>
 
+        {/* Product List Section */}
         {filteredProducts.length === 0 ? (
           <div className="flex flex-col items-center justify-center min-h-[400px]">
             <svg className="w-24 h-24 text-gray-400 mb-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -168,7 +122,7 @@ const ProductListAD = () => {
             <p className="text-2xl text-gray-400">Không có sản phẩm nào.</p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredProducts
               .slice((selectedPage - 1) * 6, selectedPage * 6)
               .map((pro) => (
@@ -224,22 +178,141 @@ const ProductListAD = () => {
           </div>
         )}
 
+        {/* Filter Section */}
+        <div className="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 shadow-xl border border-gray-700 mb-8">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+            <div className="flex items-center space-x-4">
+              <div className="relative">
+                <div
+                  onClick={toggleshow}
+                  tabIndex={0}
+                  role="button"
+                  className="px-6 py-3 bg-gray-700/50 text-white rounded-xl font-semibold shadow-lg transition-all duration-300 flex items-center space-x-2 cursor-pointer hover:bg-gray-600/50 border border-gray-600 hover:border-blue-500"
+                >
+                  <FontAwesomeIcon icon={faBox} className="w-5 h-5 text-blue-400" />
+                  <span>Lọc theo danh mục</span>
+                  <svg className={`w-4 h-4 transition-transform duration-300 ${show ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </div>
+                {show && (
+                  <div className="absolute top-full right-0 mt-2 w-64 bg-gray-800 rounded-xl shadow-xl border border-gray-700 py-2 z-[99999] animate-fadeIn">
+                    <div className="px-4 py-2 border-b border-gray-700">
+                      <h3 className="text-blue-400 font-semibold">Chọn danh mục</h3>
+                    </div>
+                    <ul className="max-h-60 overflow-y-auto">
+                      <li className="px-4 py-2 hover:bg-gray-700 cursor-pointer text-white transition-colors duration-200">
+                        <p
+                          onClick={() => {
+                            setCate("all");
+                            setSelectedPage(1);
+                            setShow(false);
+                          }}
+                          className="w-full flex items-center space-x-2"
+                        >
+                          <span className="w-2 h-2 rounded-full bg-blue-400"></span>
+                          <span>Tất cả sản phẩm</span>
+                        </p>
+                      </li>
+                      {Array.from(
+                        new Set(products.map((pro) => pro.Category?.CateName))
+                      )
+                        .filter((cateName) => cateName)
+                        .map((cateName) => (
+                          <li
+                            key={cateName}
+                            className="px-4 py-2 hover:bg-gray-700 cursor-pointer text-white transition-colors duration-200"
+                          >
+                            <p
+                              onClick={() => {
+                                setCate(cateName);
+                                setSelectedPage(1);
+                                setShow(false);
+                              }}
+                              className="w-full flex items-center space-x-2"
+                            >
+                              <span className={`w-2 h-2 rounded-full ${cate === cateName ? 'bg-green-400' : 'bg-gray-400'}`}></span>
+                              <span>{cateName}</span>
+                            </p>
+                          </li>
+                        ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
+              <div className="px-6 py-3 bg-blue-500/20 text-blue-400 rounded-xl text-lg font-semibold shadow-lg border border-blue-500/30">
+                {filteredProducts.length} sản phẩm
+              </div>
+            </div>
+            <div className="text-gray-400">
+              Đang hiển thị: {cate === "all" ? "Tất cả sản phẩm" : cate}
+            </div>
+          </div>
+        </div>
+
         {pages.length >= 2 && (
           <div className="flex justify-center mt-8">
-            <div className="flex space-x-2">
-              {pages.map((page) => (
-                <button
-                  key={page}
-                  onClick={() => setSelectedPage(page)}
-                  className={`w-10 h-10 rounded-full flex items-center justify-center text-lg font-semibold transition-all duration-300 ${
-                    selectedPage === page
-                      ? "bg-blue-500 text-white"
-                      : "bg-gray-800 text-gray-400 hover:bg-gray-700 hover:text-white"
-                  }`}
-                >
-                  {page}
-                </button>
-              ))}
+            <div className="flex items-center space-x-2">
+              <button
+                onClick={() => setSelectedPage(prev => Math.max(prev - 1, 1))}
+                disabled={selectedPage === 1}
+                className={`w-10 h-10 rounded-full flex items-center justify-center text-lg font-semibold transition-all duration-300 ${
+                  selectedPage === 1
+                    ? "bg-gray-800 text-gray-600 cursor-not-allowed"
+                    : "bg-gray-800 text-gray-400 hover:bg-gray-700 hover:text-white"
+                }`}
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+
+              {pages.map((page) => {
+                if (
+                  page === 1 ||
+                  page === pages.length ||
+                  (page >= selectedPage - 2 && page <= selectedPage + 2)
+                ) {
+                  return (
+                    <button
+                      key={page}
+                      onClick={() => setSelectedPage(page)}
+                      className={`w-10 h-10 rounded-full flex items-center justify-center text-lg font-semibold transition-all duration-300 ${
+                        selectedPage === page
+                          ? "bg-blue-500 text-white"
+                          : "bg-gray-800 text-gray-400 hover:bg-gray-700 hover:text-white"
+                      }`}
+                    >
+                      {page}
+                    </button>
+                  );
+                }
+                if (
+                  page === selectedPage - 3 ||
+                  page === selectedPage + 3
+                ) {
+                  return (
+                    <span key={page} className="text-gray-400">
+                      ...
+                    </span>
+                  );
+                }
+                return null;
+              })}
+
+              <button
+                onClick={() => setSelectedPage(prev => Math.min(prev + 1, pages.length))}
+                disabled={selectedPage === pages.length}
+                className={`w-10 h-10 rounded-full flex items-center justify-center text-lg font-semibold transition-all duration-300 ${
+                  selectedPage === pages.length
+                    ? "bg-gray-800 text-gray-600 cursor-not-allowed"
+                    : "bg-gray-800 text-gray-400 hover:bg-gray-700 hover:text-white"
+                }`}
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
             </div>
           </div>
         )}
