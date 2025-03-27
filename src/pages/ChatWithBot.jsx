@@ -32,7 +32,7 @@ const ChatWithBot = () => {
   const fetchBotReply = async (question, callback) => {
     try {
       const response = await fetch(
-        "https://e1fa-171-252-189-243.ngrok-free.app/chat",
+        "https://fb51-113-161-95-217.ngrok-free.app/chat",
         {
           method: "POST",
           headers: {
