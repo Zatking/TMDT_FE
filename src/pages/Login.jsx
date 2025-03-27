@@ -48,20 +48,14 @@ const Login = () => {
   const handleRegister = async () => {
     console.log("register");
     try {
-      const response = await fetch(apiUrl + "/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(
-          register.email,
-          register.password,
-          register.phone,
-          register.address,
-          register.birthday
-        ),
-      });
-      if (response.ok) {
+      const response = await AuthenAPI.register(
+        register.email,
+        register.password,
+        register.phone,
+        register.address,
+        register.birthday
+      );
+      if (response == true) {
         const data = await response.json();
         console.log("login", data);
         console.log("Đăng ký thành công.");
