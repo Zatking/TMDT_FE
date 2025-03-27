@@ -110,7 +110,7 @@ const DetailProAD = () => {
   }
 
   return (
-    <div className="h-screen bg-[#0f172a] p-4">
+    <div className="min-h-screen bg-[#0f172a] p-4 overflow-hidden">
       <div className="h-full max-w-7xl mx-auto">
         {/* Header */}
         <div className="relative mb-4">
@@ -151,13 +151,13 @@ const DetailProAD = () => {
         </div>
 
         {/* Content */}
-        <div className="relative h-[calc(100%-5rem)]">
+        <div className="relative h-[calc(100vh-8rem)] overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/10 to-purple-500/10 rounded-2xl blur-3xl"></div>
-          <div className="relative bg-white/90 backdrop-blur-xl rounded-2xl p-6 border border-white/20 shadow-xl h-full">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 h-full">
+          <div className="relative bg-white/90 backdrop-blur-xl rounded-2xl p-6 border border-white/20 shadow-xl h-full overflow-y-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* Image Section */}
               <div className="flex items-center justify-center">
-                <div className="w-full aspect-square border-2 border-gray-200 rounded-xl overflow-hidden bg-white shadow-lg">
+                <div className="w-full max-w-md aspect-square border-2 border-gray-200 rounded-xl overflow-hidden bg-white shadow-lg">
                   <img
                     src={data.Images}
                     alt={data.ProName}
@@ -172,31 +172,31 @@ const DetailProAD = () => {
 
               {/* Product Info */}
               <div className="grid grid-cols-2 gap-4">
-                <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-100">
+                <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300">
                   <div className="flex items-center space-x-3 mb-2">
                     <div className="p-2 bg-indigo-50 rounded-lg">
                       <FontAwesomeIcon icon={faTag} className="h-4 w-4 text-indigo-500" />
                     </div>
                     <label className="text-sm font-medium text-gray-700">Tên sản phẩm</label>
                   </div>
-                  <div className="text-sm text-gray-600">
+                  <div className="text-sm text-gray-600 break-words">
                     {data.ProName}
                   </div>
                 </div>
 
-                <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-100">
+                <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300">
                   <div className="flex items-center space-x-3 mb-2">
                     <div className="p-2 bg-indigo-50 rounded-lg">
                       <FontAwesomeIcon icon={faBox} className="h-4 w-4 text-indigo-500" />
                     </div>
                     <label className="text-sm font-medium text-gray-700">Mã sản phẩm</label>
                   </div>
-                  <div className="text-sm text-gray-600">
+                  <div className="text-sm text-gray-600 break-words">
                     GD_{data._id}
                   </div>
                 </div>
 
-                <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-100">
+                <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300">
                   <div className="flex items-center space-x-3 mb-2">
                     <div className="p-2 bg-indigo-50 rounded-lg">
                       <FontAwesomeIcon icon={faChartLine} className="h-4 w-4 text-indigo-500" />
@@ -208,7 +208,7 @@ const DetailProAD = () => {
                   </div>
                 </div>
 
-                <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-100">
+                <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300">
                   <div className="flex items-center space-x-3 mb-2">
                     <div className="p-2 bg-indigo-50 rounded-lg">
                       <FontAwesomeIcon icon={faChartLine} className="h-4 w-4 text-indigo-500" />
@@ -220,7 +220,7 @@ const DetailProAD = () => {
                   </div>
                 </div>
 
-                <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-100">
+                <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300">
                   <div className="flex items-center space-x-3 mb-2">
                     <div className="p-2 bg-indigo-50 rounded-lg">
                       <FontAwesomeIcon icon={faBoxOpen} className="h-4 w-4 text-indigo-500" />
@@ -232,7 +232,7 @@ const DetailProAD = () => {
                   </div>
                 </div>
 
-                <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-100">
+                <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300">
                   <div className="flex items-center space-x-3 mb-2">
                     <div className="p-2 bg-indigo-50 rounded-lg">
                       <FontAwesomeIcon icon={faBox} className="h-4 w-4 text-indigo-500" />
@@ -244,14 +244,14 @@ const DetailProAD = () => {
                   </div>
                 </div>
 
-                <div className="col-span-2 bg-white rounded-xl p-4 shadow-sm border border-gray-100">
+                <div className="col-span-2 bg-white rounded-xl p-4 shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300">
                   <div className="flex items-center space-x-3 mb-2">
                     <div className="p-2 bg-indigo-50 rounded-lg">
                       <FontAwesomeIcon icon={faListUl} className="h-4 w-4 text-indigo-500" />
                     </div>
                     <label className="text-sm font-medium text-gray-700">Mô tả</label>
                   </div>
-                  <div className="text-sm text-gray-600 min-h-[80px]">
+                  <div className="text-sm text-gray-600 break-words whitespace-pre-wrap">
                     {data.Description || "N/A"}
                   </div>
                 </div>
