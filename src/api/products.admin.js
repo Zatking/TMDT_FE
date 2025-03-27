@@ -15,13 +15,10 @@ class ProductAD {
 
   //create product
   async createProduct(product) {
-    const response = await fetch(
-      "https://node-tmdt.vercel.app/api/createProduct",
-      {
-        method: "POST",
-        body: product,
-      }
-    );
+    const response = await fetch(apiUrl + "/createProduct", {
+      method: "POST",
+      body: product,
+    });
     const data = await response.json();
     console.log("success", data);
     return data;
@@ -29,21 +26,18 @@ class ProductAD {
 
   async deleteProduct(id) {
     try {
-      const response = await fetch(
-        `https://node-tmdt.vercel.app/api/deleteProduct/${id}`,
-        {
-          method: "DELETE",
-          headers: {
-            "Content-Type": "application/json", // Có thể bỏ nếu API không cần
-            // Authorization: `Bearer ${yourToken}`, // Thêm nếu API yêu cầu xác thực
-          },
-        }
-      );
-  
+      const response = await fetch(apiUrl + `/deleteProduct/${id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json", // Có thể bỏ nếu API không cần
+          // Authorization: `Bearer ${yourToken}`, // Thêm nếu API yêu cầu xác thực
+        },
+      });
+
       if (!response.ok) {
         throw new Error(`Lỗi ${response.status}: Không thể xóa sản phẩm`);
       }
-  
+
       const data = await response.json();
       console.log("Xóa sản phẩm thành công:", data);
       return data;

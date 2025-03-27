@@ -1,7 +1,16 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft, faBox, faPlus, faImage, faTag, faBoxOpen, faChartLine, faListUl } from "@fortawesome/free-solid-svg-icons";
+import {
+  faArrowLeft,
+  faBox,
+  faPlus,
+  faImage,
+  faTag,
+  faBoxOpen,
+  faChartLine,
+  faListUl,
+} from "@fortawesome/free-solid-svg-icons";
 import ProductAD from "../../api/products.admin";
 
 const AddPro = () => {
@@ -53,11 +62,18 @@ const AddPro = () => {
               </Link>
               <div className="flex items-center space-x-6">
                 <div className="p-5 bg-gradient-to-br from-blue-500 to-purple-500 rounded-2xl shadow-lg">
-                  <FontAwesomeIcon icon={faBox} className="h-10 w-10 text-white" />
+                  <FontAwesomeIcon
+                    icon={faBox}
+                    className="h-10 w-10 text-white"
+                  />
                 </div>
                 <div>
-                  <h1 className="text-4xl font-bold text-white">Thêm sản phẩm mới</h1>
-                  <p className="text-blue-100 mt-2 text-lg">Điền thông tin chi tiết sản phẩm</p>
+                  <h1 className="text-4xl font-bold text-white">
+                    Thêm sản phẩm mới
+                  </h1>
+                  <p className="text-blue-100 mt-2 text-lg">
+                    Điền thông tin chi tiết sản phẩm
+                  </p>
                 </div>
               </div>
             </div>
@@ -77,7 +93,10 @@ const AddPro = () => {
                   </label>
                   <div className="relative group">
                     <div className="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none">
-                      <FontAwesomeIcon icon={faImage} className="h-6 w-6 text-blue-400 group-focus-within:text-blue-300 transition-colors" />
+                      <FontAwesomeIcon
+                        icon={faImage}
+                        className="h-6 w-6 text-blue-400 group-focus-within:text-blue-300 transition-colors"
+                      />
                     </div>
                     <input
                       type="url"
@@ -109,12 +128,17 @@ const AddPro = () => {
                     </label>
                     <div className="relative group">
                       <div className="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none">
-                        <FontAwesomeIcon icon={faTag} className="h-6 w-6 text-blue-400 group-focus-within:text-blue-300 transition-colors" />
+                        <FontAwesomeIcon
+                          icon={faTag}
+                          className="h-6 w-6 text-blue-400 group-focus-within:text-blue-300 transition-colors"
+                        />
                       </div>
                       <input
                         type="text"
                         value={products.ProName}
-                        onChange={(e) => setProducts({ ...products, ProName: e.target.value })}
+                        onChange={(e) =>
+                          setProducts({ ...products, ProName: e.target.value })
+                        }
                         className="w-full pl-14 pr-4 py-4 bg-white/5 border-2 border-white/10 rounded-2xl text-white placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
                         required
                       />
@@ -127,12 +151,17 @@ const AddPro = () => {
                     </label>
                     <div className="relative group">
                       <div className="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none">
-                        <FontAwesomeIcon icon={faChartLine} className="h-6 w-6 text-blue-400 group-focus-within:text-blue-300 transition-colors" />
+                        <FontAwesomeIcon
+                          icon={faChartLine}
+                          className="h-6 w-6 text-blue-400 group-focus-within:text-blue-300 transition-colors"
+                        />
                       </div>
                       <input
                         type="number"
                         value={products.Price}
-                        onChange={(e) => setProducts({ ...products, Price: e.target.value })}
+                        onChange={(e) =>
+                          setProducts({ ...products, Price: e.target.value })
+                        }
                         className="w-full pl-14 pr-4 py-4 bg-white/5 border-2 border-white/10 rounded-2xl text-white placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
                         required
                       />
@@ -145,12 +174,20 @@ const AddPro = () => {
                     </label>
                     <div className="relative group">
                       <div className="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none">
-                        <FontAwesomeIcon icon={faBoxOpen} className="h-6 w-6 text-blue-400 group-focus-within:text-blue-300 transition-colors" />
+                        <FontAwesomeIcon
+                          icon={faBoxOpen}
+                          className="h-6 w-6 text-blue-400 group-focus-within:text-blue-300 transition-colors"
+                        />
                       </div>
                       <input
                         type="number"
                         value={products.RemainQuantity}
-                        onChange={(e) => setProducts({ ...products, RemainQuantity: e.target.value })}
+                        onChange={(e) =>
+                          setProducts({
+                            ...products,
+                            RemainQuantity: e.target.value,
+                          })
+                        }
                         className="w-full pl-14 pr-4 py-4 bg-white/5 border-2 border-white/10 rounded-2xl text-white placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
                         required
                       />
@@ -163,12 +200,20 @@ const AddPro = () => {
                     </label>
                     <div className="relative group">
                       <div className="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none">
-                        <FontAwesomeIcon icon={faChartLine} className="h-6 w-6 text-blue-400 group-focus-within:text-blue-300 transition-colors" />
+                        <FontAwesomeIcon
+                          icon={faChartLine}
+                          className="h-6 w-6 text-blue-400 group-focus-within:text-blue-300 transition-colors"
+                        />
                       </div>
                       <input
                         type="number"
                         value={products.SoldQuantity}
-                        onChange={(e) => setProducts({ ...products, SoldQuantity: e.target.value })}
+                        onChange={(e) =>
+                          setProducts({
+                            ...products,
+                            SoldQuantity: e.target.value,
+                          })
+                        }
                         className="w-full pl-14 pr-4 py-4 bg-white/5 border-2 border-white/10 rounded-2xl text-white placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
                         required
                       />
@@ -183,11 +228,19 @@ const AddPro = () => {
                     </label>
                     <div className="relative group">
                       <div className="absolute top-4 left-5">
-                        <FontAwesomeIcon icon={faListUl} className="h-6 w-6 text-blue-400 group-focus-within:text-blue-300 transition-colors" />
+                        <FontAwesomeIcon
+                          icon={faListUl}
+                          className="h-6 w-6 text-blue-400 group-focus-within:text-blue-300 transition-colors"
+                        />
                       </div>
                       <textarea
                         value={products.Description}
-                        onChange={(e) => setProducts({ ...products, Description: e.target.value })}
+                        onChange={(e) =>
+                          setProducts({
+                            ...products,
+                            Description: e.target.value,
+                          })
+                        }
                         rows="4"
                         className="w-full pl-14 pr-4 py-4 bg-white/5 border-2 border-white/10 rounded-2xl text-white placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
                         required
@@ -201,12 +254,17 @@ const AddPro = () => {
                     </label>
                     <div className="relative group">
                       <div className="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none">
-                        <FontAwesomeIcon icon={faBox} className="h-6 w-6 text-blue-400 group-focus-within:text-blue-300 transition-colors" />
+                        <FontAwesomeIcon
+                          icon={faBox}
+                          className="h-6 w-6 text-blue-400 group-focus-within:text-blue-300 transition-colors"
+                        />
                       </div>
                       <input
                         type="text"
                         value={products.Category}
-                        onChange={(e) => setProducts({ ...products, Category: e.target.value })}
+                        onChange={(e) =>
+                          setProducts({ ...products, Category: e.target.value })
+                        }
                         className="w-full pl-14 pr-4 py-4 bg-white/5 border-2 border-white/10 rounded-2xl text-white placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
                         required
                       />
