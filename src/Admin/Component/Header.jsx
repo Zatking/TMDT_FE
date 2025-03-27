@@ -78,7 +78,7 @@ const Header = () => {
               {/* Sign Out Button */}
               {isProfileOpen && (
                 <div className="absolute right-0 mt-2 w-56 bg-gray-800/95 backdrop-blur-sm rounded-xl shadow-2xl border border-gray-700/50 overflow-hidden transform transition-all duration-300"
-                onClick={()=>(localStorage.removeItem("Role"),window.location.reload())}>
+                onClick={()=>(localStorage.removeItem("Role"),window.location.reload(),localStorage.removeItem("lastPath"))}>
                   <button className="flex items-center space-x-3 p-4 w-full hover:bg-red-500/10 transition-colors group">
                     <div className="relative">
                       <div className="absolute inset-0 bg-red-500 rounded-full blur-md opacity-30 group-hover:opacity-50 transition-opacity"></div>
