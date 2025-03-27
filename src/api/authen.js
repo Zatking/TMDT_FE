@@ -29,5 +29,27 @@ class AuthenAPI {
       console.log(error);
     }
   }
+
+  async register(email, password, phone, address, birthday) {
+    if (!email || !password || !phone || !address || !birthday) {
+      return alert("Vui lòng nhập đầy đủ thông tin.");
+    }
+    try {
+      const response = await fetch(apiUrl + "/register", {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(email, password, phone, address, birthday),
+      });
+      if (response.ok) {
+        console.log("Đăng ký thành công.");
+        return true;
+      } else {
+        return false;
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }
 export default new AuthenAPI();
